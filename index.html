@@ -3,86 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2than online judge</title> <!-- 웹페이지 제목도 바꿔줌 -->
+    <title>2than online judge</title> 
     <style>
-        body { font-family: sans-serif; margin: 0; padding: 20px; }
-        img{ float: left; margin-right: 10px; cursor: pointer; }
+        /* 페이지 전체 설정 */
+        body {
+            font-family: sans-serif; /* 폰트를 ans-serif 로*/
+            margin: 0; /* 페이지 바깥 여백은 없애기*/
+            padding: 20px; /* 안쪽 여백은 20띄우기*/
+        }
+        /* img 태그*/
+        img{
+            float: left; /* 그림 왼쪽으로*/
+            margin-right: 10px; /* 그림 오른쪽에 10px 여백 */
+            cursor: pointer; /*커서를 포인터 모양으로*/
+        }
+        /*버튼 태그*/
         .btn{
-            font-size: 20px;
-            padding: 15px 30px;
-            margin-top: 20px; /* 버튼을 살짝 아래로 내림 */
-            background-color: white;
-            color: black;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            font-size: 20px; /* 글씨 크기 20*/
+            padding: 15px 30px; /* 버튼 안쪽 여백 위아래 15, 좌우 30 */
+            margin-top: 20px; /* 버튼 위 20 */
+            background-color: white; /* 배경 하얀색 */
+            color: black; /* 글씨 까만색 */
+            border: none; /* 테두리 없애기*/
+            border-radius: 20px; /* 버튼 모서리 둥글게*/
+            cursor: pointer; /*커서 포인터 모양으로*/
+            transition: background-color 0.3s ease; /* 0.3초 부드럽게*/
         }
+        /* 버튼에 마우스 올리면*/
         .btn:hover{
-            background-color: gray;
+            background-color: gray; /* 배경을 회색으로 바꾸가 */
         }
-        /* 새롭게 추가할 콘텐츠 영역 스타일 */
+        /*메인 설정*/
         #main-content {
-            margin-top: 20px; /* 로고와 버튼 아래에 위치 */
-            padding: 20px;
-            border: 1px dashed #ccc;
-            min-height: 150px;
-            text-align: center; /* 기본은 가운데 정렬 */
-            display: flex;
-            flex-direction: column; /* 내용이 세로로 쌓이도록 */
-            justify-content: center; /* 가로 중앙 정렬 */
-            align-items: center; /* 세로 중앙 정렬 */
+            margin-top: 20px; /* 위쪽 20 */
+            padding: 20px; /* 안쪽 20*/
+            border: 1px dashed #ccc; /* 회색 점선 테두리*/
+            min-height: 150px; /* 최소 높이 150 */
+            text-align: center; /* 텍스트 가운데 정렬*/
+            display: flex; /* 배치 플렉스 모드 / 효율적 으로 이동 위해 */
+            flex-direction: column; /* 세로로 쌓기*/
+            justify-content: center; /* 세로 방향 가운데 정렬 */
+            align-items: center; /* 가로 방향 가운데 정렬*/
         }
-        #main-content.problem-list { /* 문제 목록일 때만 왼쪽 정렬 */
-            align-items: flex-start;
+        /*문제 리스트 */
+        #main-content.problem-list {
+            align-items: flex-start; /*왼쪽 정렬*/
         }
-        #main-content.problem-detail { /* 문제 상세 페이지일 때 내용 */
-            align-items: flex-start;
+        /*문제 상세 페이지*/
+        #main-content.problem-detail {
+            align-items: flex-start; /*왼쪽 정렬 */
         }
+        /* 메인 안의 h2*/
         #main-content h2 {
-            color: #333;
-            font-size: 2em;
-            margin-bottom: 10px;
+            color: #333; /* 글씨색 진한 회색 */
+            font-size: 2em; /* 글씨 크기 2배 */
+            margin-bottom: 10px; /* 밑에 10만큼 여백*/
         }
+        /*메인 안의 p*/
         #main-content p {
-            color: #666;
-            font-size: 1.2em;
-            margin-top: 0;
+            color: #666; /* 글씨색 연한 회색 */
+            font-size: 1.2em; /* 글씨 크기 1.2배*/
+            margin-top: 0; /* 위쪽 여백 삭제*/
         }
+        /* 메인 안의 ul*/
         .problem-list ul {
-            list-style: none; /* 리스트 스타일 제거 */
-            padding: 0;
-            width: 100%; /* 너비 100%로 설정 */
+            list-style: none; /* 목록 앞 점 숫자 삭제 */
+            padding: 0; /* 안쪽 여백 삭제 */
+            width: 100%; /* 너비 100% */
         }
+        /* .메인 안의 li*/
         .problem-list li {
-            margin-bottom: 10px;
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            text-align: left; /* 문제 목록 개별 항목 왼쪽 정렬 */
+            margin-bottom: 10px; /* 목록 항목끼리 10만큼 떨어지게 */
+            background-color: #f9f9f9; /* 배경 아주 연한 회색*/
+            padding: 15px; /* 안쪽 여백 15 */
+            border-radius: 5px; /* 모서리 둥글게 */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /*그림자 효과*/
+            text-align: left; /* 글씨 왼쪽 정렬 */
         }
+        /* 메인 안의 a(링크) */
         .problem-list li a {
-            text-decoration: none;
-            color: gray;
-            font-weight: bold;
-            font-size: 1.1em;
-            display: block; /* 클릭 영역 넓게 */
+            text-decoration: none; /* 링크 밑줄 삭제*/
+            color: gray; /* 글씨색 회색 */
+            font-weight: bold; /* 글씨 두껍게 */
+            font-size: 1.1em; /* 글씨 크기 1.1배 */
+            display: block; /* 링크 클릭 영역 넓게*/
         }
+        /* 문제 리스트 a에 마우스 올리면 */
         .problem-list li a:hover {
-            color: black;
-            text-decoration: underline;
+            color: black; /* 글씨색 까맣게 */
+            text-decoration: underline; /* 밑줄 다시 생기게 */
         }
+        /* 문제 상세 내용 */
         .problem-detail-content {
-            width: 100%;
-            text-align: left;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            margin-top: 20px;
+            width: 100%; /* 너비 100%*/
+            text-align: left; /* 글씨 왼쪽 */
+            padding: 15px; /* 안쪽 여백 15 */
+            background-color: #f9f9f9; /* 배경 연한 회색*/
+            border-radius: 5px; /* 모서리 둥글게 */
+            margin-top: 20px; /* 위에 20 여백*/
         }
+        /* 코드 보이는 곳 */
         pre code{
-            font-size: 20px;
+            font-size: 20px; /* 코드 글씨 크기 20 */
         }
     </style>
 </head>
@@ -91,119 +113,134 @@
     <button class="btn">문제</button>
 
     <div id="main-content">
-        <!-- 초기 내용은 자바스크립트로 로드됨 -->
+
     </div>
 
     <script>
-        const logoImage = document.getElementById('logo');
-        const problemButton = document.querySelector('.btn');
-        const mainContent = document.getElementById('main-content');
+        const logoImage = document.getElementById('logo'); // ID가 'logo'인 이미지 요소를 찾아옴
+        const problemButton = document.querySelector('.btn'); // 클래스가 'btn'인 첫 번째 요소를 찾아옴
+        const mainContent = document.getElementById('main-content'); // ID가 'main-content'인 요소를 찾아옴
 
-        // 🌟 1. 문제 데이터 정의 🌟
+        // 문제집
         const problemData = {
-            '1': { title: '#1: 첫 심부름', content: '<p>철수는 엄마의 부탁으로 마트에 심부름을 가고 있다.</p><p>철수는 오이 n 개와 당근 m 개를 사서 와야 한다.</p><p>하지만 철수는 수학에 약하여 총 몇 개를 사 와야 하는지 모른다.</p><p>우리가 철수의 심부름을 도와주자</p><hr><p><b>입력:</b> 첫째 줄에 n와 m이 주어진다. (0 < n, m < 10)</p><p><b>출력:</b> 첫째 줄에 n+m를 출력한다.<hr></p><pre><code>예시 입력:\n1 2\n예시 출력:\n3</code></pre>' },
-              '2': { title: '#2: 연필 한 다스만 주시오', content: '<p>연필의 개수를 샐 때 우리는 다스라는 단위를 사용한다.</p><p>1다스는 연필 12개이다</p><p>철수는 다스라는 단위를 몰라 연필을 살 때 사기를 당하지는 않을까 걱정하고 있다</p><p>우리가 철수 대신 이 연필이 한 다스가 맞는지 판별해 주자</p><hr><p><b>입력:</b> 첫째 줄에 연필의 개수 n이 주어진다. (0 < n < 100)</p><p><b>출력:</b> 첫째 줄에 한 다스가 맞다면 OK 아니면 NO 를 출력하라</p><hr></p><pre><code>예시 입력:\n1\n예시 출력:\nNO</code></pre>' },
-        };
+            '1': { // 1번 문제
+                title: '#1: 첫 심부름', // 제목
+                content: '<p>철수는 엄마의 부탁으로 마트에 심부름을 가고 있다.</p><p>철수는 오이 n 개와 당근 m 개를 사서 와야 한다.</p><p>하지만 철수는 수학에 약하여 총 몇 개를 사 와야 하는지 모른다.</p><p>우리가 철수의 심부름을 도와주자</p><hr><p><b>입력:</b> 첫째 줄에 n와 m이 주어진다. (0 < n, m < 10)</p><p><b>출력:</b> 첫째 줄에 n+m를 출력한다.<hr></p><pre><code>예시 입력:\n1 2\n예시 출력:\n3</code></pre>'
+            },
+            '2': { // 2번 문제
+                title: '#2: 연필 한 다스만 주시오',
+                content: '<p>연필의 개수를 샐 때 우리는 다스라는 단위를 사용한다.</p><p>1다스는 연필 12개이다</p><p>철수는 다스라는 단위를 몰라 연필을 살 때 사기를 당하지는 않을까 걱정하고 있다</p><p>우리가 철수 대신 이 연필이 한 다스가 맞는지 판별해 주자</p><hr><p><b>입력:</b> 첫째 줄에 연필의 개수 n이 주어진다. (0 < n < 100)</p><p><b>출력:</b> 첫째 줄에 한 다스가 맞다면 OK 아니면 NO 를 출력하라</p><hr><pre><code>예시 입력:\n5 6\n예시 출력:\n30</code></pre>'
+            },
 
-        // 🌟 2. 라우트 정의 (이제 contentGenerator 함수를 활용할 거야!) 🌟
+        };
+        // 라우트 정의 / 파이지 주소에 따라 보여주는것 정하는 것
         const routes = {
-            '': {
+            '': { // 기본 주소
                 title: '2than online judge',
                 content: `
                     <h2>환영합니다!</h2>
                     <p>현재 채점은 불가능하고, 문제 보기만 가능합니다</p>
+                    <br>
                     <p>This web is made by 2than</p>
-                `
+                    <br>
+                    <h3>Update data</h3>
+                    <p>2025/8/27 수요일: 사이트 오픈/ 1,2문제 업데이트</p>
+                    <p>2025/8/28 목요일: 2번문제 오타 수정</p>
+                ` 
             },
-            '/problems': {
-                title: 'problem list',
-                // 🌟 문제 목록 페이지는 콘텐츠를 동적으로 생성할 함수를 넣어줄 거야! 🌟
+            '/problems': { // '/problems'
+                title: 'problem list', 
+                // 함수 실행 할때 마다 html 생성 및 리턴
                 contentGenerator: () => {
-                    let problemsHtml = '<h2>문제</h2><div class="problem-list"><ul>';
+                    let problemsHtml = '<h2>문제</h2><div class="problem-list"><ul>'; // 문제 목록 시작 HTML
+                    // 'problemData' 객체를 돌면서 각 문제 정보를 가져옴
                     for (const id in problemData) {
-                        // 각 문제 링크를 '#/problems/문제번호' 형태로 만들어서 data-path에 넣어줘.
+                        // 각 문제에 대한 링크
+                        // 'data-path' 로 링크로 이동
                         problemsHtml += `<li><a href="#/problems/${id}" data-path="/problems/${id}">${problemData[id].title}</a></li>`;
                     }
-                    problemsHtml += '</ul></div>';
-                    return problemsHtml;
+                    problemsHtml += '</ul></div>'; // 문제 목록 끝 HTML
+                    return problemsHtml; // 완성된 HTML 문자열을 반환
                 },
-                // 🌟 추가된 CSS 클래스 (정렬용) 🌟
-                cssClass: 'problem-list'
+                cssClass: 'problem-list' // mainContent에 추가될 CSS 클래스.
+ 
             }
         };
-
-        // 🌟 3. renderPage 함수 똑똑하게 개선하기! 🌟
+        // 주소가 주어지면, 그 주소에 맞는 내용을 'mainContent'에 뿌려줌
         function renderPage(path) {
-            mainContent.className = ''; // 기존 클래스 제거
+            mainContent.className = ''; // 'mainContent'의 CSS 클래스 초기화
 
-            // 1. routes에 직접 매칭되는 경로 찾기 (ex: '', '/problems')
-            let route = routes[path];
-
-            // 2. '/problems/문제번호' 형태의 동적 경로 처리
-            if (!route && path.startsWith('/problems/')) {
-                const problemId = path.substring('/problems/'.length); // '/problems/' 뒤의 ID를 추출
-                if (problemData[problemId]) { // 해당 ID의 문제가 problemData에 있는지 확인
+            // 1. routes에 직접 매칭되는 경로 찾기
+            let route = routes[path]; // 주어진 'path'가 'routes' 객체에 있는지 확인
+            // 만약 'routes'에 직접 매칭되는 경로가 없으면, 혹시 '/problems/1', '/problems/2' 같은 형태인지 확인하는 부분.
+            if (!route && path.startsWith('/problems/')) { // 'route'가 없고(false), 'path'가 '/problems/'로 시작한다면
+                // '문제 ID'만 뽑아냄
+                const problemId = path.substring('/problems/'.length);
+                if (problemData[problemId]) { // 뽑아낸 'problemId'가 존재하는 문제 ID인지 확인
+                    // 존재하는 문제라면, 반환해 줄 정보 저장.
                     route = {
-                        title: problemData[problemId].title,
+                        title: problemData[problemId].title, // 해당 문제의 제목을 타이틀로
                         content: `<h2 class="problem-title">${problemData[problemId].title}</h2><div class="problem-detail-content">${problemData[problemId].content}</div>`,
-                        cssClass: 'problem-detail' // 문제 상세 페이지용 클래스
+                        // 문제 제목과 내용을 조합해서 HTML 콘텐츠를 만듦
+                        cssClass: 'problem-detail' // 문제 상세 페이지에 적용할 CSS 클래스
                     };
                 }
             }
-
-            // 3. 찾은 라우트를 바탕으로 내용 렌더링
-            if (route) {
-                // contentGenerator 함수가 있다면 그걸 실행해서 콘텐츠를 가져와.
+           // 라우트를 바탕으로 렌더링
+            // 얻은 정보를 바탕으로 페이지 내용으로 보냄
+            if (route) { // 'route' 정보가 있으면
+                // 'contentGenerator' 함수가 있는지 확인, 반환되는 값을 'innerHTML'에 저장
+                // 만약 'contentGenerator'가 없으면, 'route.content'에 저장
                 mainContent.innerHTML = route.contentGenerator ? route.contentGenerator() : route.content;
-                document.title = route.title;
-                if (route.cssClass) {
-                    mainContent.classList.add(route.cssClass); // 클래스 추가 (정렬용)
+                document.title = route.title; // 페이지 제목도 'route'로 바꿈.
+                if (route.cssClass) { // 'route'에 'cssClass' 정보가 있다면
+                    mainContent.classList.add(route.cssClass); // 'mainContent' 요소에 해당 CSS 클래스를 추가
                 }
-            } else {
-                // 매칭되는 라우트가 없으면 404 대신 홈으로 리다이렉트
-                history.replaceState({ path: '' }, '', '#');
-                renderPage('');
+            } else { // 만약 'route' 정보가 없으면
+                //홈으로 이동(404 error 말고)
+                history.replaceState({ path: '' }, '', '#'); // 현재 주소 기록을 메인으로
+                renderPage(''); // 그리고 'renderPage' 호풀, 홈 페이지 내용을 보여줌
             }
         }
-
-        // 🌟 4. 로고 이미지 클릭 이벤트 리스너 🌟
+        // 로고 클릭
         logoImage.addEventListener('click', () => {
-            history.pushState({ path: '' }, '', '#');
-            renderPage('');
+            history.pushState({ path: '' }, '', '#'); // 현재 주소를 '' 으로 변경
+            renderPage(''); //홈 페이지 내용 'mainContent'에 렌더링
         });
 
-        // '문제' 버튼 클릭 이벤트 리스너 (문제 목록으로 이동)
+        // '문제' 버튼
         problemButton.addEventListener('click', () => {
-            const path = '/problems';
-            history.pushState({ path: path }, '', `#${path}`);
-            renderPage(path);
+            const path = '/problems'; // '/problems'로
+            history.pushState({ path: path }, '', `#${path}`); // 히스토리에 추가
+            renderPage(path); // 해당 경로 내용을 'mainContent'에 렌더링
         });
-
-        // 🌟 5. 이벤트 위임! (mainContent 안의 클릭 이벤트를 한번에 처리) 🌟
-        mainContent.addEventListener('click', (event) => {
-            const target = event.target; // 클릭된 요소
-
-            // 만약 클릭된 요소가 'A' 태그이고, data-path 속성을 가지고 있으며, '/problems/'로 시작한다면
-            if (target.tagName === 'A' && target.dataset.path && target.dataset.path.startsWith('/problems/')) {
-                event.preventDefault(); // 기본 링크 이동 동작 막기
-
-                const path = target.dataset.path;
-                history.pushState({ path: path }, '', `#${path}`);
-                renderPage(path);
+        // 실제로 '클릭된 요소' 판별
+        mainContent.addEventListener('click', (event) => { // 클릭되면 실행
+            const target = event.target; //클릭된 HTML 요소를 가리킴
+            if (target.tagName === 'A' // 클릭된 요소가 <a> 태그인지 확인!
+                && target.dataset.path // 클릭된 요소에 'data-path' 속성이 있는지 확인
+                && target.dataset.path.startsWith('/problems/')) { // 그리고 'data-path' 속성값이 '/problems/'로 시작하는지 확인
+                event.preventDefault(); // 기본 링크 이동 동작 막음
+                const path = target.dataset.path; // 클릭된 링크의 'data-path' 값을 가져와서 'path' 변수에 저장
+                history.pushState({ path: path }, '', `#${path}`); // 이 경로를 히스토리에 추가
+                renderPage(path); // 해당 경로의 내용을 렌더링
             }
         });
 
 
         // 사용자가 브라우저의 '뒤로 가기' 또는 '앞으로 가기' 버튼을 눌렀을 때
         window.addEventListener('popstate', (event) => {
+            // 현재 브라우저의 주소창에서 '#'(해시) 뒤에 있는 문자열을 가져오기
+            // 만약 해시가 없으면 메인
             const currentHash = location.hash.substring(1) || '';
-            renderPage(currentHash);
+            renderPage(currentHash); // 가져온 해시 값으로 다시 페이지를 렌더링
         });
 
         // 페이지가 처음 로드되었을 때
         window.addEventListener('load', () => {
-            const initialHash = location.hash.substring(1) || '';
-            renderPage(initialHash);
+            const initialHash = location.hash.substring(1) || ''; // 처음 로드될 때 주소창의 해시 값을 가져옴
+            renderPage(initialHash); // 이 해시 값에 맞는 페이지 내용을 렌더링
+            // 사용자가 처음 페이지에 들어왔을 때의 주소 기록을 현제 해시값으로 바꿔치기하여 초기상태로 돌아가기
             history.replaceState({ path: initialHash }, '', `#${initialHash}`);
         });
 
