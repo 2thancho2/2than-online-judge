@@ -122,6 +122,14 @@
              color: gray; /* 글씨색 회색 */
             text-decoration: underline; /* 밑줄 다시 생기게 */
         }
+        .four-problem{
+            text-decoration: none; /* 링크 밑줄 삭제*/
+            color: black; /* 글씨색 검은색 */
+        }
+        .four-problem:hover{
+             color: gray; /* 글씨색 회색 */
+            text-decoration: underline; /* 밑줄 다시 생기게 */
+        }
     </style>
 </head>
 <body>
@@ -150,6 +158,10 @@
             '3': { // 3번 문제
                 title: '#3: 다스가 뭐지', // 제목
                 content: '<p>철수는 하나에 2000원 하는 초초초초초초초고급 연필을 미술 선생님의 부탁으로 사 오게 되었다</p><p>미술 선생님은 연필 n 다스를 사 오는 것을 원한다</p><p>앞선 <a href="https://2than.netlify.app/#/problems/2" class="three-problem">2번 문제</a>처럼 철수는 다스라는 단위를 모른다</p><p>개다가 철수는 수학에도 약하여 곱셈을 하는 방법을 모른다.</p><p>우리가 철수가 사기를 당하지 않도록 도와주자</p><hr><p><b>입력:</b> 첫째 줄에 연필 다스의 개수 n과 철수가 받은 연필의 개수 m이 주어진다. (0 < n, m < 1000)</p><p><b>출력:</b> m이 n다스보다 작다면 &apos;사기&apos;를, m이 n다스라면 &apos;정상&apos;을, m이 n다스 보다 많으면 &apos;개꿀&apos;을 출력하라<hr></p><pre><code>예시 입력:\n1 2\n예시 출력:\n사기</code></pre>'
+            },
+            '4': { // 4번 문제
+                title: '#4: 정ㅋ벅ㅋ', // 제목
+                content: '<p>이 문제를 푸는 자 우주를 정ㅋ벅ㅋ한다.</p><hr><p><b>입력:</b> <br>우주를 정ㅋ벅ㅋ하는 자에겐 입력 따위 필요 없다.</p><p><b>출력:</b><br>첫째 줄에 문제의 정답을 출력한다.<hr></p><p><b>힌트:</b><br>우주를 정ㅋ벅ㅋ할 사람에게는 예제 입력과 예제 출력이 필요하지 않다.</p><br><p><b><a href="https://www.acmicpc.net/problem/1237" class="four-problem">참고</a></b><br></p>'
             },
         };
         // 라우트 정의 / 파이지 주소에 따라 보여주는것 정하는 것
