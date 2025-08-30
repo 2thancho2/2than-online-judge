@@ -106,6 +106,14 @@
         pre code{
             font-size: 20px; /* 코드 글씨 크기 20 */
         }
+        .program-profile{
+            text-decoration: none; /* 링크 밑줄 삭제*/
+            color: black; /* 글씨색 회색 */
+        }
+        .program-profile:hover{
+             color: gray; /* 글씨색 까맣게 */
+            text-decoration: underline; /* 밑줄 다시 생기게 */
+        }
     </style>
 </head>
 <body>
@@ -141,11 +149,12 @@
                     <h2>환영합니다!</h2>
                     <p>현재 채점은 불가능하고, 문제 보기만 가능합니다</p>
                     <br>
-                    <p>This web is made by 2than</p>
+                    <p>This web is made by <a href="https://www.instagram.com/2_than/%20target=" class="program-profile">2than<a></p>
                     <br>
                     <h3>Update data</h3>
                     <p>2025/8/27 수요일: 사이트 오픈/ 1,2문제 업데이트</p>
                     <p>2025/8/28 목요일: 2번문제 오타 수정</p>
+                    <p>2025/8/30 토요일: 개발자 링크 추가</p>
                 ` 
             },
             '/problems': { // '/problems'
