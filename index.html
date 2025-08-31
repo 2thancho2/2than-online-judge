@@ -130,6 +130,14 @@
              color: gray; /* 글씨색 회색 */
             text-decoration: underline; /* 밑줄 다시 생기게 */
         }
+         .five-problem{
+            text-decoration: none; /* 링크 밑줄 삭제*/
+            color: black; /* 글씨색 검은색 */
+        }
+        .five-problem:hover{
+             color: gray; /* 글씨색 회색 */
+            text-decoration: underline; /* 밑줄 다시 생기게 */
+        }
     </style>
 </head>
 <body>
@@ -161,7 +169,11 @@
             },
             '4': { // 4번 문제
                 title: '#4: 정ㅋ벅ㅋ', // 제목
-                content: '<p>이 문제를 푸는 자 우주를 정ㅋ벅ㅋ한다.</p><hr><p><b>입력:</b> <br>우주를 정ㅋ벅ㅋ하는 자에겐 입력 따위 필요 없다.</p><p><b>출력:</b><br>첫째 줄에 문제의 정답을 출력한다.<hr></p><p><b>힌트:</b><br>우주를 정ㅋ벅ㅋ할 사람에게는 예제 입력과 예제 출력이 필요하지 않다.</p><br><p><b><a href="https://www.acmicpc.net/problem/1237" class="four-problem">참고</a></b><br></p>'
+                content: '<p>이 문제를 푸는 자 우주를 정ㅋ벅ㅋ한다.</p><hr><p><b>입력:</b> <br>우주를 정ㅋ벅ㅋ하는 자에겐 입력 따위 필요 없다.</p><p><b>출력:</b><br>첫째 줄에 문제의 정답을 출력한다.<hr></p><p><b>힌트:</b><br>우주를 정ㅋ벅ㅋ할 사람에게는 예제 입력과 예제 출력이 필요하지 않다.</p><br><p><b><a href="https://www.acmicpc.net/problem/1237" class="four-problem">출처</a></b><br></p>'
+            },
+            '5': { // 5번 문제
+                title: '#5: 타노스', // 제목
+                content: '<p><b>이 일이 끝나면 인류의 절반은 살아남을 것이다.</b></p><p>타노스가 당신 앞에 나타났다.</p><p>당신은 살아남을 수 있을까?</p><hr><p><b>입력:</b> <br>이 문제는 입력이 주어지지 않는다.</p><p><b>출력:</b><br>당신이 살아남는다면 1을, 살아남지 못한다면 0을 출력한다.<hr></p><br><p><b><a href="https://www.acmicpc.net/problem/15802" class="five-problem">출처</a></b><br></p>'
             },
         };
         // 라우트 정의 / 파이지 주소에 따라 보여주는것 정하는 것
@@ -178,6 +190,7 @@
                     <p>2025/8/27 수요일: 사이트 오픈/ 1,2문제 업데이트</p>
                     <p>2025/8/28 목요일: 2번문제 오타 수정</p>
                     <p>2025/8/30 토요일: 매인 페이지 업데이트/3,4번 문제 추가</p>
+                    <p>2025/8/31 일요일: 5번 문제 추가</p>
                 ` 
             },
             '/problems': { // '/problems'
