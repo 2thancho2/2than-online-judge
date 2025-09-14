@@ -169,13 +169,13 @@
         }
         
     </style>
-    <link rel="icon" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FHz8rU%2FbtsQyaLpAOa%2FAAAAAAAAAAAAAAAAAAAAAO6MRFIOCkll6_DQaQ6SytBBWe-ScBsUQ56tUe8LAGPx%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DXz%252BsfjM3%252BwyR75UMCJr9Jp3tL2o%253D" type="image/png" />
+    <link rel="icon" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fb4vnUK%2FbtsQxGDD6tM%2FAAAAAAAAAAAAAAAAAAAAAPP3sl-vRcpX28umteqXktMomZZ7uXQXGftIYG2mV17Q%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DKVqkcRgiRbjUpNo1aziLx7bWR8Q%253D" type="image/png" />
 </head>
 <body>
     <!-- (여기에는 로고 이미지나 '문제' 버튼 같은 HTML 요소들이 들어갈 수 있음) -->
     <!-- 예시를 위해 <div id="logo">와 <button class="btn">을 추가한다고 가정 -->
-    <img id="logo" width="105" height="105" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FvLlz5%2FbtsQbDeYgGj%2FAAAAAAAAAAAAAAAAAAAAAPBlfavssiM9n84xL0NrOZvFrYZPpV-bl7YscXy-qXLl%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3Dvb6VArz6LNEIzhrAAiZe8gWHms0%253D">
-    <button class="btn">문제 목록</button>
+    <img id="logo" width="105" height="105" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fb4vnUK%2FbtsQxGDD6tM%2FAAAAAAAAAAAAAAAAAAAAAPP3sl-vRcpX28umteqXktMomZZ7uXQXGftIYG2mV17Q%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DKVqkcRgiRbjUpNo1aziLx7bWR8Q%253D">
+    <button class="btn">문제</button>
     
     <div id="main-content">
         <!-- JS로 여기에 내용이 동적으로 로드될 거야! -->
@@ -213,11 +213,13 @@
                     <h2>환영합니다!</h2>
                     <p>현재 채점은 불가능하고, 문제 보기만 가능합니다</p>
                     <br>
-                    <p>This web is made by 2than</p>
+                    <p>This web is made by <a href="https://www.instagram.com/2_than/%20target=" class="program-profile">2than<a></p>
                     <br>
                     <h3>Update data</h3>
                     <p>2025/8/27 수요일: 사이트 오픈/ 1,2문제 업데이트</p>
-                    <p>2025/8/28 목요일: 3번 문제 업데이트 및 2번문제 오타 수정</p>
+                    <p>2025/8/28 목요일: 2번문제 오타 수정</p>
+                    <p>2025/8/30 토요일: 매인 페이지 업데이트</p>
+                    <p>2025/9/14 일요일: 로고 변경/ 페이지 UI업데이트/ 제출 탭 추가</p>
                 ` // 보여줄 HTML 내용! 백틱(`)을 써서 여러 줄의 문자열을 편하게 쓸 수 있음.
             },
             '/problems': { // 주소가 '#/problems'일 때
@@ -283,9 +285,8 @@
                                     <div id="submission-tab-content" class="tab-pane">
                                         <!-- 여기에 제출 탭 내용이 들어감. 지금은 예시 텍스트만! -->
                                         <p>여기는 **제출 탭** 입니다.</p>
-                                        <p>철수 문제를 풀 코드를 작성해서 제출해보세요!</p>
-                                        <pre><code>n, m = map(int, input().split())
-print(n + m)</code></pre>
+                                        <p>현제 제출할수 없습니다.</p>
+                                      
                                         <!-- 나중에 진짜 제출 기능 넣을 때 여기에 textarea, button 등이 들어가겠지! -->
                                     </div>
                                 </div>
