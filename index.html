@@ -1,285 +1,399 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2than online judge</title> 
+    <title>2than Online Judge</title>
     <style>
-        /* 페이지 전체 설정 */
+        /* body 태그는 웹페이지 전체에 해당하는 스타일이야. 글꼴, 여백 같은 기본값 정할 때 많이 씀! */
         body {
-            font-family: sans-serif; /* 폰트를 ans-serif 로*/
-            margin: 0; /* 페이지 바깥 여백은 없애기*/
-            padding: 20px; /* 안쪽 여백은 20띄우기*/
+            font-family: sans-serif; /* 글씨체는 궁서체 말고, 깔끔하게 sans-serif 계열로 해줘! */
+            margin: 0; /* 페이지 바깥 여백은 싹 없애버렷! */
+            padding: 20px; /* 근데 안쪽 여백은 20만큼 살짝 띄워줘~ */
+            background-color: white; /* 배경색을 살짝 회색톤으로 줘서 깔끔하게! */
         }
-        /* img 태그*/
+        /* img 태그는 이미지에 적용되는 스타일! */
         img{
-            float: left; /* 그림 왼쪽으로*/
-            margin-right: 10px; /* 그림 오른쪽에 10px 여백 */
-            cursor: pointer; /*커서를 포인터 모양으로*/
+            float: left; /* 그림은 왼쪽에 딱 붙여놔! 옆에 글씨 오게 */
+            margin-right: 10px; /* 그림 오른쪽에 10만큼 여백 좀 줘 */
+            cursor: pointer; /* 마우스 올리면 손가락으로 바꿔줘! 클릭 가능하게 */
         }
-        /*버튼 태그*/
+        /* .btn 클래스를 가진 요소에 적용되는 스타일! (버튼으로 많이 씀) */
         .btn{
-            font-size: 20px; /* 글씨 크기 20*/
-            padding: 15px 30px; /* 버튼 안쪽 여백 위아래 15, 좌우 30 */
-            margin-top: 20px; /* 버튼 위 20 */
-            background-color: white; /* 배경 하얀색 */
-            color: black; /* 글씨 까만색 */
-            border: none; /* 테두리 없애기*/
-            border-radius: 20px; /* 버튼 모서리 둥글게*/
-            cursor: pointer; /*커서 포인터 모양으로*/
-            transition: background-color 0.3s ease; /* 0.3초 부드럽게*/
+            font-size: 20px; /* 글씨 크기 20으로 좀 키워줘 */
+            padding: 15px 30px; /* 버튼 안쪽 여백은 위아래 15, 좌우 30으로 시원하게! */
+            margin-top: 20px; /* 버튼 위에는 20만큼 공간 띄워주고 */
+            background-color: white; /* 배경은 하얗게! */
+            color: black; /* 글씨는 까맣게! */
+            border: none; /* 테두리는 아예 없애버려! 깔끔하게 */
+            border-radius: 20px; /* 버튼 모서리는 둥글게! 20만큼 */
+            cursor: pointer; /* 마우스 올리면 손가락으로 바꿔줘! */
+            transition: background-color 0.3s ease; /* 배경색 변할 때 0.3초 동안 부드럽게 변하게 해줘~ */
         }
-        /* 버튼에 마우스 올리면*/
+        /* .btn 클래스를 가진 요소에 마우스가 올라갔을 때 적용되는 스타일! (버튼에 마우스 올리면 색깔 변하는 거 ㅇㅇ) */
         .btn:hover{
-            background-color: gray; /* 배경을 회색으로 바꾸가 */
+            background-color: gray; /* 배경을 회색으로 바꿔서 '나 눌릴 준비 됐음' 티내기 ㅋㅋ */
         }
-        /*메인 설정*/
+        /* #main-content 아이디를 가진 요소에 적용되는 스타일! (주요 콘텐츠 영역일 듯?) */
         #main-content {
-            margin-top: 20px; /* 위쪽 20 */
-            padding: 20px; /* 안쪽 20*/
-            border: 1px dashed #ccc; /* 회색 점선 테두리*/
-            min-height: 150px; /* 최소 높이 150 */
-            text-align: center; /* 텍스트 가운데 정렬*/
-            display: flex; /* 배치 플렉스 모드 / 효율적 으로 이동 위해 */
-            flex-direction: column; /* 세로로 쌓기*/
-            justify-content: center; /* 세로 방향 가운데 정렬 */
-            align-items: center; /* 가로 방향 가운데 정렬*/
+            margin-top: 20px; /* 위쪽 여백 20px */
+            padding: 20px; /* 안쪽 여백 20px */
+            border: 1px dashed #ccc; /* 1px 두께의 회색 점선 테두리! */
+            min-height: 150px; /* 최소 높이를 150px로 설정해서 내용이 적어도 일정 높이를 유지하게 함 */
+            text-align: center; /* 텍스트를 중앙 정렬. 근데 flex로 정렬하니까 사실상 크게 의미는 없음 ㅋㅋ */
+            display: flex; /* 요소를 Flexbox 컨테이너로 만듦. 이제 자식 요소들을 자유롭게 배치할 수 있다! */
+            flex-direction: column; /* 자식 요소들을 세로 방향(컬럼)으로 쌓음 */
+            justify-content: center; /* 자식 요소들을 세로 방향(주축)에서 중앙으로 정렬 */
+            align-items: center; /* 자식 요소들을 가로 방향(교차축)에서 중앙으로 정렬 (세로 중앙 정렬) */
+            background-color: white; /* 메인 콘텐츠 배경도 흰색으로! */
+            border-radius: 8px; /* 메인 콘텐츠 모서리도 살짝 둥글게 */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 효과도 좀 넣어줘 */
         }
-        /*문제 리스트 */
+        /* #main-content 요소에 .problem-list 클래스가 같이 있을 때 적용되는 스타일! (문제 목록 페이지 같은?) */
         #main-content.problem-list {
-            align-items: flex-start; /*왼쪽 정렬*/
+            align-items: flex-start; /* 자식 요소들을 가로 방향(교차축)에서 시작 지점(왼쪽)으로 정렬 */
         }
-        /*문제 상세 페이지*/
+        /* #main-content 요소에 .problem-detail 클래스가 같이 있을 때 적용되는 스타일! (문제 상세 페이지일 때) */
         #main-content.problem-detail {
-            align-items: flex-start; /*왼쪽 정렬 */
+            align-items: flex-start; /* 자식 요소들을 가로 방향(교차축)에서 시작 지점(왼쪽)으로 정렬 */
         }
-        /* 메인 안의 h2*/
+        /* #main-content 안에 있는 h2 태그에 적용되는 스타일! */
         #main-content h2 {
-            color: #333; /* 글씨색 진한 회색 */
-            font-size: 2em; /* 글씨 크기 2배 */
-            margin-bottom: 10px; /* 밑에 10만큼 여백*/
+            color: #333; /* 글자색을 진한 회색으로! */
+            font-size: 2em; /* 글자 크기를 부모 요소 글자 크기의 2배로! (제목이니까 크기 좀 키움) */
+            margin-bottom: 10px; /* 아래쪽 여백 10px */
         }
-        /*메인 안의 p*/
+        /* #main-content 안에 있는 p 태그에 적용되는 스타일! */
         #main-content p {
-            color: #666; /* 글씨색 연한 회색 */
-            font-size: 1.2em; /* 글씨 크기 1.2배*/
-            margin-top: 0; /* 위쪽 여백 삭제*/
+            color: #666; /* 글자색을 조금 연한 회색으로! */
+            font-size: 1.2em; /* 글자 크기를 부모 요소 글자 크기의 1.2배로! */
+            margin-top: 0; /* 위쪽 여백 없앰 */
         }
-        /* 메인 안의 ul*/
+        /* .problem-list 클래스 안에 있는 ul (unordered list) 태그에 적용되는 스타일! (목록 스타일) */
         .problem-list ul {
-            list-style: none; /* 목록 앞 점 숫자 삭제 */
-            padding: 0; /* 안쪽 여백 삭제 */
-            width: 100%; /* 너비 100% */
+            list-style: none; /* 리스트 앞에 붙는 점이나 숫자 같은 기본 스타일(불릿)을 없앰 */
+            padding: 0; /* 안쪽 여백 없앰. 보통 ul 태그는 기본 padding이 있어서 없애주는 경우가 많음 */
+            width: 100%; /* 너비를 100%로 설정해서 부모 요소 전체를 차지하게 함 */
         }
-        /* .메인 안의 li*/
+        /* .problem-list 클래스 안에 있는 li (list item) 태그에 적용되는 스타일! (목록 아이템 하나하나) */
         .problem-list li {
-            margin-bottom: 10px; /* 목록 항목끼리 10만큼 떨어지게 */
-            background-color: #f9f9f9; /* 배경 아주 연한 회색*/
-            padding: 15px; /* 안쪽 여백 15 */
-            border-radius: 5px; /* 모서리 둥글게 */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /*그림자 효과*/
-            text-align: left; /* 글씨 왼쪽 정렬 */
+            margin-bottom: 10px; /* 아래쪽 여백 10px. 목록 항목들 사이에 간격을 줌 */
+            background-color: #f9f9f9; /* 배경색을 아주 연한 회색으로! */
+            padding: 15px; /* 안쪽 여백 15px */
+            border-radius: 5px; /* 테두리를 둥글게! */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 은은한 그림자 효과를 줘서 좀 튀어나온 느낌 */
+            text-align: left; /* 텍스트를 왼쪽 정렬 (문제 목록 개별 항목 왼쪽 정렬) */
         }
-        /* 메인 안의 a(링크) */
+        /* .problem-list 클래스 안에 있는 li 안에 있는 a (anchor, 링크) 태그에 적용되는 스타일! */
         .problem-list li a {
-            text-decoration: none; /* 링크 밑줄 삭제*/
-            color: gray; /* 글씨색 회색 */
-            font-weight: bold; /* 글씨 두껍게 */
-            font-size: 1.1em; /* 글씨 크기 1.1배 */
-            display: block; /* 링크 클릭 영역 넓게*/
+            text-decoration: none; /* 링크 밑줄 없앰. 보통 웹 디자인할 때 기본 밑줄은 다 없앰 */
+            color: gray; /* 글씨색은 회색으로! */
+            font-weight: bold; /* 글자를 두껍게! */
+            font-size: 1.1em; /* 글자 크기를 부모 요소 글자 크기의 1.1배로! */
+            display: block; /* a 태그를 블록 요소처럼 동작하게 함. 이걸 하면 클릭 영역이 텍스트 너비가 아니라 전체 li 너비로 넓어짐! */
         }
-        /* 문제 리스트 a에 마우스 올리면 */
+        /* .problem-list li a 에 마우스가 올라갔을 때 적용되는 스타일! */
         .problem-list li a:hover {
-            color: black; /* 글씨색 까맣게 */
-            text-decoration: underline; /* 밑줄 다시 생기게 */
+            color: black; /* 글자색을 검은색으로 바꿔서 마우스가 올라갔다는 표시 */
+            text-decoration: underline; /* 밑줄을 다시 생기게 해서 링크라는 걸 강조! */
         }
-        /* 문제 상세 내용 */
+        /* .problem-detail-content 클래스를 가진 요소에 적용되는 스타일! (문제 상세 페이지의 실제 내용 부분인 듯) */
         .problem-detail-content {
-            width: 100%; /* 너비 100%*/
-            text-align: left; /* 글씨 왼쪽 */
-            padding: 15px; /* 안쪽 여백 15 */
-            background-color: #f9f9f9; /* 배경 연한 회색*/
-            border-radius: 5px; /* 모서리 둥글게 */
-            margin-top: 20px; /* 위에 20 여백*/
+            width: 100%; /* 너비를 100%로 설정해서 부모 요소 전체를 차지하게 함 */
+            text-align: left; /* 텍스트를 왼쪽 정렬 */
+            padding: 15px; /* 안쪽 여백 15px */
+            background-color: #f9f9f9; /* 배경색을 아주 연한 회색으로! */
+            border-radius: 5px; /* 테두리를 둥글게! */
+            margin-top: 20px; /* 위쪽 여백 20px */
         }
-        /* 코드 보이는 곳 */
         pre code{
-            font-size: 20px; /* 코드 글씨 크기 20 */
+            font-size: 20px; /* 코드 글자 크기를 20px로! (코드가 잘 보이게) */
         }
-        .program-profile{
-            text-decoration: none; /* 링크 밑줄 삭제*/
-            color: black; /* 글씨색 검은색 */
+
+        /* ---------------------------------------------------- */
+        /* ✨ 새로 추가된 탭 관련 CSS! ✨ */
+        /* 탭 버튼 컨테이너 (문제 / 제출 버튼 감싸는 부분) */
+        .problem-tabs {
+            display: flex; /* 버튼들을 가로로 나란히 정렬 */
+            margin-top: 20px; /* 제목이랑 살짝 떨어뜨려 줘 */
+            margin-bottom: -2px; /* 밑에 테두리랑 딱 붙게 음수 마진 사용! */
+            border-bottom: 2px solid #eee; /* 탭 아래쪽에 옅은 회색 라인 하나 깔아줌 */
         }
-        .program-profile:hover{
-             color: gray; /* 글씨색 회색 */
-            text-decoration: underline; /* 밑줄 다시 생기게 */
+
+        /* 개별 탭 버튼 */
+        .tab-button {
+            background-color: #f0f0f0; /* 비활성 탭 배경색은 살짝 회색 */
+            color: #555; /* 글자색은 진한 회색 */
+            padding: 10px 20px; /* 위아래 10, 좌우 20 안쪽 여백 */
+            border: none; /* 기본 테두리 없애고 */
+            border-radius: 5px 5px 0 0; /* 위쪽 모서리만 둥글게! (아래는 각지게) */
+            cursor: pointer; /* 마우스 올리면 손가락 모양으로 */
+            font-size: 1em; /* 글자 크기는 보통 */
+            margin-right: 5px; /* 버튼들 사이에 살짝 간격 */
+            transition: background-color 0.2s ease, color 0.2s ease; /* 호버 시 색 변할 때 부드럽게 */
+            border-bottom: 2px solid transparent; /* 활성 탭 밑줄 효과를 위해 미리 투명 테두리 줌 */
+            outline: none; /* 클릭 시 생기는 파란색 윤곽선 없애기 */
         }
-        .three-problem{
-            text-decoration: none; /* 링크 밑줄 삭제*/
-            color: black; /* 글씨색 검은색 */
+
+        .tab-button:hover {
+            background-color: #e0e0e0; /* 마우스 올리면 좀 더 진한 회색 */
         }
-        .three-problem:hover{
-             color: gray; /* 글씨색 회색 */
-            text-decoration: underline; /* 밑줄 다시 생기게 */
+
+        /* 활성 탭 버튼 */
+        .tab-button.active {
+            background-color: white; /* 활성 탭은 배경색 흰색으로 확! 살려주고 */
+            color: #333; /* 글자색도 더 진하게 */
+            font-weight: bold; /* 글씨도 두껍게! */
+            border-bottom: 2px solid #6c5ce7; /* 활성 탭 아래쪽에 보라색 라인 쫙! */
+            z-index: 1; /* 다른 요소보다 살짝 위로 올라오게 (선이 겹칠 때) */
+            position: relative; /* z-index를 사용하려면 position이 relative, absolute 등이어야 해 */
         }
-        .four-problem{
-            text-decoration: none; /* 링크 밑줄 삭제*/
-            color: black; /* 글씨색 검은색 */
+
+        /* 탭 내용 컨테이너 */
+        .tab-content-container {
+            border: 1px solid #eee; /* 내용 감싸는 부분 테두리 */
+            border-top: none; /* 탭 버튼이랑 이어지게 위쪽 테두리는 없앰 */
+            padding: 20px; /* 내용물 안쪽 여백 */
+            background-color: white; /* 배경 흰색 */
+            border-radius: 0 5px 5px 5px; /* 위쪽은 각지고 아래쪽만 둥글게 */
         }
-        .four-problem:hover{
-             color: gray; /* 글씨색 회색 */
-            text-decoration: underline; /* 밑줄 다시 생기게 */
+
+        /* 탭 패널 (문제 내용 / 제출 내용) */
+        .tab-pane {
+            display: none; /* 기본적으로는 다 안 보이게 숨김 */
         }
-         .five-problem{
-            text-decoration: none; /* 링크 밑줄 삭제*/
-            color: black; /* 글씨색 검은색 */
+
+        /* 활성 탭 패널 */
+        .tab-pane.active {
+            display: block; /* 'active' 클래스 붙은 탭만 보이게 함! */
         }
-        .five-problem:hover{
-             color: gray; /* 글씨색 회색 */
-            text-decoration: underline; /* 밑줄 다시 생기게 */
-        }
+        
     </style>
     <link rel="icon" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FHz8rU%2FbtsQyaLpAOa%2FAAAAAAAAAAAAAAAAAAAAAO6MRFIOCkll6_DQaQ6SytBBWe-ScBsUQ56tUe8LAGPx%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DXz%252BsfjM3%252BwyR75UMCJr9Jp3tL2o%253D" type="image/png" />
 </head>
 <body>
-    <img id="logo" width="105" height="100" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FvLlz5%2FbtsQbDeYgGj%2FAAAAAAAAAAAAAAAAAAAAAPBlfavssiM9n84xL0NrOZvFrYZPpV-bl7YscXy-qXLl%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3Dvb6VArz6LNEIzhrAAiZe8gWHms0%253D">
-    <button class="btn">문제</button>
-
+    <!-- (여기에는 로고 이미지나 '문제' 버튼 같은 HTML 요소들이 들어갈 수 있음) -->
+    <!-- 예시를 위해 <div id="logo">와 <button class="btn">을 추가한다고 가정 -->
+    <img id="logo" width="105" height="105" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FvLlz5%2FbtsQbDeYgGj%2FAAAAAAAAAAAAAAAAAAAAAPBlfavssiM9n84xL0NrOZvFrYZPpV-bl7YscXy-qXLl%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3Dvb6VArz6LNEIzhrAAiZe8gWHms0%253D">
+    <button class="btn">문제 목록</button>
+    
     <div id="main-content">
-
+        <!-- JS로 여기에 내용이 동적으로 로드될 거야! -->
+        <h2>로딩 중...</h2>
+        <p>잠시만 기다려 주세요!</p>
     </div>
 
     <script>
-        const logoImage = document.getElementById('logo'); // ID가 'logo'인 이미지 요소를 찾아옴
-        const problemButton = document.querySelector('.btn'); // 클래스가 'btn'인 첫 번째 요소를 찾아옴
-        const mainContent = document.getElementById('main-content'); // ID가 'main-content'인 요소를 찾아옴
+        // DOM 요소들을 변수에 미리 저장해두면 나중에 쓸 때 편함. 자주 쓰는 애들 뽑아놓기!
+        const logoImage = document.getElementById('logo'); // ID가 'logo'인 이미지 요소를 찾아옴 (예: 로고 이미지)
+        const problemButton = document.querySelector('.btn'); // 클래스가 'btn'인 첫 번째 요소를 찾아옴 (예: 문제 목록 버튼)
+        const mainContent = document.getElementById('main-content'); // ID가 'main-content'인 요소를 찾아옴 (여기다 내용 뿌려줄 거야!)
 
-        // 문제집
+        // 🌟 1. 문제 데이터 정의 🌟
+        // '문제집' 같은 거라고 생각하면 됨. 각 문제마다 번호, 제목, 내용이 들어있지.
         const problemData = {
-            '1': { // 1번 문제
-                title: '#1: 첫 심부름', // 제목
+            '1': { // 1번 문제!
+                title: '#1: 첫 심부름', // 문제 제목
                 content: '<p>철수는 엄마의 부탁으로 마트에 심부름을 가고 있다.</p><p>철수는 오이 n 개와 당근 m 개를 사서 와야 한다.</p><p>하지만 철수는 수학에 약하여 총 몇 개를 사 와야 하는지 모른다.</p><p>우리가 철수의 심부름을 도와주자</p><hr><p><b>입력:</b> 첫째 줄에 n와 m이 주어진다. (0 < n, m < 10)</p><p><b>출력:</b> 첫째 줄에 n+m를 출력한다.<hr></p><pre><code>예시 입력:\n1 2\n예시 출력:\n3</code></pre>'
+                // 문제 내용이 여기 다 들어가 있네. HTML 태그까지 다 박아놨네? 굿굿!
             },
-            '2': { // 2번 문제
+            '2': { // 2번 문제!
                 title: '#2: 연필 한 다스만 주시오',
                 content: '<p>연필의 개수를 샐 때 우리는 다스라는 단위를 사용한다.</p><p>1다스는 연필 12개이다</p><p>철수는 다스라는 단위를 몰라 연필을 살 때 사기를 당하지는 않을까 걱정하고 있다</p><p>우리가 철수 대신 이 연필이 한 다스가 맞는지 판별해 주자</p><hr><p><b>입력:</b> 첫째 줄에 연필의 개수 n이 주어진다. (0 < n < 100)</p><p><b>출력:</b> 첫째 줄에 한 다스가 맞다면 OK 아니면 NO 를 출력하라</p><hr><pre><code>예시 입력:\n5 6\n예시 출력:\n30</code></pre>'
             },
-            '3': { // 3번 문제
-                title: '#3: 다스가 뭐지', // 제목
-                content: '<p>철수는 하나에 2000원 하는 초초초초초초초고급 연필을 미술 선생님의 부탁으로 사 오게 되었다</p><p>미술 선생님은 연필 n 다스를 사 오는 것을 원한다</p><p>앞선 <a href="https://2than.netlify.app/#/problems/2" class="three-problem">2번 문제</a>처럼 철수는 다스라는 단위를 모른다</p><p>개다가 철수는 수학에도 약하여 곱셈을 하는 방법을 모른다.</p><p>우리가 철수가 사기를 당하지 않도록 도와주자</p><hr><p><b>입력:</b> 첫째 줄에 연필 다스의 개수 n과 철수가 받은 연필의 개수 m이 주어진다. (0 < n, m < 1000)</p><p><b>출력:</b> m이 n다스보다 작다면 &apos;사기&apos;를, m이 n다스라면 &apos;정상&apos;을, m이 n다스 보다 많으면 &apos;개꿀&apos;을 출력하라<hr></p><pre><code>예시 입력:\n1 2\n예시 출력:\n사기</code></pre>'
-            },
+            // 다른 문제들도 이런 식으로 추가하면 됨.
         };
-        // 라우트 정의 / 파이지 주소에 따라 보여주는것 정하는 것
+
+        // 🌟 2. 라우트 정의 🌟
+        // '라우트'는 페이지 주소(URL 해시값)에 따라 어떤 내용을 보여줄지 결정하는 '내비게이션 지도' 같은 거임!
         const routes = {
-            '': { // 기본 주소
-                title: '2than online judge',
+            '': { // 기본 주소 ('#'이나 아무것도 없을 때)
+                title: '2than online judge', // 페이지 제목 (웹 브라우저 탭에 보일 제목 같은 거)
                 content: `
                     <h2>환영합니다!</h2>
                     <p>현재 채점은 불가능하고, 문제 보기만 가능합니다</p>
                     <br>
-                    <p>This web is made by <a href="https://www.instagram.com/2_than/%20target=" class="program-profile">2than<a></p>
+                    <p>This web is made by 2than</p>
                     <br>
                     <h3>Update data</h3>
                     <p>2025/8/27 수요일: 사이트 오픈/ 1,2문제 업데이트</p>
-                    <p>2025/8/28 목요일: 2번문제 오타 수정</p>
-                    <p>2025/8/30 토요일: 매인 페이지 업데이트/3,4번 문제 추가</p>
-                    <p>2025/8/31 일요일: 5번 문제 추가</p>
-                ` 
+                    <p>2025/8/28 목요일: 3번 문제 업데이트 및 2번문제 오타 수정</p>
+                ` // 보여줄 HTML 내용! 백틱(`)을 써서 여러 줄의 문자열을 편하게 쓸 수 있음.
             },
-            '/problems': { // '/problems'
-                title: 'problem list', 
-                // 함수 실행 할때 마다 html 생성 및 리턴
-                contentGenerator: () => {
+            '/problems': { // 주소가 '#/problems'일 때
+                title: 'problem list', // 페이지 제목
+                contentGenerator: () => { // 문제 목록 페이지는 콘텐츠를 동적으로 생성할 함수를 넣어줄 거야!
                     let problemsHtml = '<h2>문제</h2><div class="problem-list"><ul>'; // 문제 목록 시작 HTML
-                    // 'problemData' 객체를 돌면서 각 문제 정보를 가져옴
-                    for (const id in problemData) {
-                        // 각 문제에 대한 링크
-                        // 'data-path' 로 링크로 이동
+                    for (const id in problemData) { // 'problemData' 객체를 돌면서 각 문제 정보를 가져옴
+                        // 각 문제에 대한 링크를 '#/problems/문제번호' 형태로 만들어줘.
                         problemsHtml += `<li><a href="#/problems/${id}" data-path="/problems/${id}">${problemData[id].title}</a></li>`;
                     }
                     problemsHtml += '</ul></div>'; // 문제 목록 끝 HTML
                     return problemsHtml; // 완성된 HTML 문자열을 반환
                 },
-                cssClass: 'problem-list' // mainContent에 추가될 CSS 클래스.
- 
+                cssClass: 'problem-list' // 이 라우트가 활성화될 때 'mainContent'에 추가될 CSS 클래스.
             }
         };
-        // 주소가 주어지면, 그 주소에 맞는 내용을 'mainContent'에 뿌려줌
-        function renderPage(path) {
-            mainContent.className = ''; // 'mainContent'의 CSS 클래스 초기화
 
-            // 1. routes에 직접 매칭되는 경로 찾기
-            let route = routes[path]; // 주어진 'path'가 'routes' 객체에 있는지 확인
-            // 만약 'routes'에 직접 매칭되는 경로가 없으면, 혹시 '/problems/1', '/problems/2' 같은 형태인지 확인하는 부분.
-            if (!route && path.startsWith('/problems/')) { // 'route'가 없고(false), 'path'가 '/problems/'로 시작한다면
-                // '문제 ID'만 뽑아냄
-                const problemId = path.substring('/problems/'.length);
-                if (problemData[problemId]) { // 뽑아낸 'problemId'가 존재하는 문제 ID인지 확인
-                    // 존재하는 문제라면, 반환해 줄 정보 저장.
+        // 🌟 3. renderPage 함수 똑똑하게 개선하기! 🌟
+        // 'renderPage' 함수는 어떤 주소(path)가 주어지면, 그 주소에 맞는 내용을 'mainContent'에 뿌려주는 핵심 함수!
+        function renderPage(path) {
+            mainContent.className = ''; // 일단 'mainContent'에 붙어있는 CSS 클래스들을 싹 지워버려. (초기화)
+
+            // 1. routes에 직접 매칭되는 경로 찾기 (ex: '', '/problems')
+            let route = routes[path]; // 주어진 'path'가 'routes' 객체에 직접 있는지 찾아봐.
+
+            let currentProblemId = null; // 현재 보고 있는 문제의 ID를 저장할 변수
+            let currentTabName = 'problem'; // 현재 활성화될 탭 이름 (기본값: 'problem')
+
+            // 2. '/problems/문제번호' 또는 '/problems/문제번호/탭이름' 형태의 동적 경로 처리
+            if (!route && path.startsWith('/problems/')) { // 'routes'에 직접 매칭되는 경로가 없고, '/problems/'로 시작한다면?
+                // 주소에서 '/problems/' 부분을 제거하고 남은 부분을 '/' 기준으로 쪼개!
+                // 예: '/problems/1/submission' -> ['1', 'submission']
+                // 예: '/problems/1' -> ['1']
+                const parts = path.substring('/problems/'.length).split('/');
+                currentProblemId = parts[0]; // 첫 번째 부분은 문제 ID (예: '1')
+
+                if (parts.length > 1) { // 만약 두 번째 부분이 있다면, 그게 탭 이름!
+                    currentTabName = parts[1]; // (예: 'submission')
+                } else { // 두 번째 부분이 없으면 기본적으로 'problem' 탭!
+                    currentTabName = 'problem'; // (예: '/problems/1'로 접속하면 'problem' 탭이 열림)
+                }
+
+                if (problemData[currentProblemId]) { // 뽑아낸 'problemId'가 'problemData'에 진짜 존재하는 문제 ID인지 확인!
+                    // 오! 존재하는 문제라면, 임시 'route' 객체를 직접 만들어서 반환해 줄 정보를 채워줌.
                     route = {
-                        title: problemData[problemId].title, // 해당 문제의 제목을 타이틀로
-                        content: `<h2 class="problem-title">${problemData[problemId].title}</h2><div class="problem-detail-content">${problemData[problemId].content}</div>`,
-                        // 문제 제목과 내용을 조합해서 HTML 콘텐츠를 만듦
+                        title: problemData[currentProblemId].title, // 해당 문제의 제목을 타이틀로!
+                        // ✨ contentGenerator를 사용해서 탭 구조와 내용을 동적으로 생성! ✨
+                        contentGenerator: () => {
+                            const problemContentHtml = problemData[currentProblemId].content; // 기존 문제 내용
+                            return `
+                                <h2 class="problem-title">${problemData[currentProblemId].title}</h2>
+                                <div class="problem-tabs">
+                                    <!-- data-problem-id 속성을 추가해서 나중에 URL 만들 때 쓰게 할 거야! -->
+                                    <button class="tab-button" data-tab="problem" data-problem-id="${currentProblemId}">문제</button>
+                                    <button class="tab-button" data-tab="submission" data-problem-id="${currentProblemId}">제출</button>
+                                </div>
+                                <div class="tab-content-container">
+                                    <div id="problem-tab-content" class="tab-pane">
+                                        <div class="problem-detail-content">
+                                            ${problemContentHtml}
+                                        </div>
+                                    </div>
+                                    <div id="submission-tab-content" class="tab-pane">
+                                        <!-- 여기에 제출 탭 내용이 들어감. 지금은 예시 텍스트만! -->
+                                        <p>여기는 **제출 탭** 입니다.</p>
+                                        <p>철수 문제를 풀 코드를 작성해서 제출해보세요!</p>
+                                        <pre><code>n, m = map(int, input().split())
+print(n + m)</code></pre>
+                                        <!-- 나중에 진짜 제출 기능 넣을 때 여기에 textarea, button 등이 들어가겠지! -->
+                                    </div>
+                                </div>
+                            `;
+                        },
                         cssClass: 'problem-detail' // 문제 상세 페이지에 적용할 CSS 클래스
                     };
                 }
             }
-           // 라우트를 바탕으로 렌더링
-            // 얻은 정보를 바탕으로 페이지 내용으로 보냄
+
+            // 3. 찾은 라우트를 바탕으로 내용 렌더링
             if (route) { // 'route' 정보가 있으면
-                // 'contentGenerator' 함수가 있는지 확인, 반환되는 값을 'innerHTML'에 저장
-                // 만약 'contentGenerator'가 없으면, 'route.content'에 저장
                 mainContent.innerHTML = route.contentGenerator ? route.contentGenerator() : route.content;
-                document.title = route.title; // 페이지 제목도 'route'로 바꿈.
-                if (route.cssClass) { // 'route'에 'cssClass' 정보가 있다면
-                    mainContent.classList.add(route.cssClass); // 'mainContent' 요소에 해당 CSS 클래스를 추가
+                document.title = route.title; // 브라우저 탭 제목 변경
+                if (route.cssClass) {
+                    mainContent.classList.add(route.cssClass); // 메인 콘텐츠에 CSS 클래스 추가
                 }
-            } else { // 만약 'route' 정보가 없으면
-                //홈으로 이동(404 error 말고)
-                history.replaceState({ path: '' }, '', '#'); // 현재 주소 기록을 메인으로
-                renderPage(''); // 그리고 'renderPage' 호풀, 홈 페이지 내용을 보여줌
+
+                // ✨ 문제 상세 페이지라면, URL에서 파싱한 탭을 활성화 시켜줘야 해! ✨
+                if (currentProblemId) { // 문제 ID가 존재하면 (즉, 문제 상세 페이지일 경우)
+                    activateTab(currentTabName); // currentTabName에 해당하는 탭을 활성화!
+                }
+
+            } else { // 매칭되는 라우트가 없으면
+                history.replaceState({ path: '' }, '', '#'); // 현재 주소 기록을 빈 경로('#')로 바꿔버림.
+                renderPage(''); // 홈 페이지 내용을 보여주도록 함.
             }
         }
-        // 로고 클릭
+
+        // 🌟 탭을 활성화하는 함수 🌟
+        // 이 함수는 이제 UI만 업데이트해. URL 변경은 여기서 안 함!
+        function activateTab(tabName) {
+            // 모든 탭 버튼에서 'active' 클래스 제거
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            // 모든 탭 패널에서 'active' 클래스 제거 (숨기기)
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+
+            // 클릭된 탭 버튼을 찾아서 'active' 클래스 추가!
+            const activeButton = document.querySelector(`.tab-button[data-tab="${tabName}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+
+            // 해당 탭 내용(패널)을 찾아서 'active' 클래스 추가!
+            const activePane = document.getElementById(`${tabName}-tab-content`);
+            if (activePane) {
+                activePane.classList.add('active');
+            }
+        }
+
+
+        // 🌟 4. 로고 이미지 클릭 이벤트 리스너 🌟
         logoImage.addEventListener('click', () => {
-            history.pushState({ path: '' }, '', '#'); // 현재 주소를 '' 으로 변경
-            renderPage(''); //홈 페이지 내용 'mainContent'에 렌더링
+            history.pushState({ path: '' }, '', '#'); // 현재 주소를 ''(빈 주소 = 홈)으로 만들어서 히스토리에 추가.
+            renderPage(''); // 그리고 홈 페이지 내용을 'mainContent'에 렌더링!
         });
 
-        // '문제' 버튼
+        // '문제' 버튼 클릭 이벤트 리스너 (문제 목록으로 이동)
         problemButton.addEventListener('click', () => {
-            const path = '/problems'; // '/problems'로
-            history.pushState({ path: path }, '', `#${path}`); // 히스토리에 추가
-            renderPage(path); // 해당 경로 내용을 'mainContent'에 렌더링
+            const path = '/problems'; // 이동할 경로를 '/problems'로 지정.
+            history.pushState({ path: path }, '', `#${path}`); // 이 경로를 히스토리에 추가하고
+            renderPage(path); // 해당 경로의 내용을 'mainContent'에 렌더링!
         });
-        // 실제로 '클릭된 요소' 판별
-        mainContent.addEventListener('click', (event) => { // 클릭되면 실행
-            const target = event.target; //클릭된 HTML 요소를 가리킴
-            if (target.tagName === 'A' // 클릭된 요소가 <a> 태그인지 확인!
-                && target.dataset.path // 클릭된 요소에 'data-path' 속성이 있는지 확인
-                && target.dataset.path.startsWith('/problems/')) { // 그리고 'data-path' 속성값이 '/problems/'로 시작하는지 확인
-                event.preventDefault(); // 기본 링크 이동 동작 막음
-                const path = target.dataset.path; // 클릭된 링크의 'data-path' 값을 가져와서 'path' 변수에 저장
-                history.pushState({ path: path }, '', `#${path}`); // 이 경로를 히스토리에 추가
-                renderPage(path); // 해당 경로의 내용을 렌더링
+
+        // 🌟 5. 이벤트 위임! (mainContent 안의 클릭 이벤트를 한번에 처리) 🌟
+        mainContent.addEventListener('click', (event) => {
+            const target = event.target; // 클릭된 요소
+
+            // 만약 클릭된 요소가 'A' 태그이고, data-path 속성을 가지고 있으며, '/problems/'로 시작한다면 (기존 라우팅 처리)
+            if (target.tagName === 'A' && target.dataset.path && target.dataset.path.startsWith('/problems/')) {
+                event.preventDefault(); // 기본 링크 이동 동작 막기
+
+                const path = target.dataset.path;
+                // ✨ 이제 문제 상세 페이지로 이동할 때, 기본 탭 (problem)까지 주소에 넣어줘! ✨
+                const fullPath = `${path}/problem`; // 예: /problems/1 -> /problems/1/problem
+                history.pushState({ path: fullPath }, '', `#${fullPath}`);
+                renderPage(fullPath); // 업데이트된 전체 경로로 렌더링!
+            }
+            // ✨ 탭 버튼 클릭 이벤트 처리! 이제 URL도 같이 변경한다! ✨
+            else if (target.classList.contains('tab-button')) { // 클릭된 요소가 'tab-button' 클래스를 가지고 있다면?
+                const tabName = target.dataset.tab; // data-tab 속성에서 탭 이름 가져오기 (예: 'problem', 'submission')
+                const problemId = target.dataset.problemId; // data-problem-id 속성에서 문제 ID 가져오기
+
+                if (tabName && problemId) {
+                    const newPath = `/problems/${problemId}/${tabName}`; // 새롭게 만들 경로! 예: /problems/1/submission
+                    history.pushState({ path: newPath }, '', `#${newPath}`); // ✨ 주소창을 이 새로운 경로로 업데이트! ✨
+                    renderPage(newPath); // ✨ 변경된 주소로 페이지를 다시 렌더링 (이때 activateTab이 호출될 거야!) ✨
+                }
             }
         });
 
 
         // 사용자가 브라우저의 '뒤로 가기' 또는 '앞으로 가기' 버튼을 눌렀을 때
         window.addEventListener('popstate', (event) => {
-            // 현재 브라우저의 주소창에서 '#'(해시) 뒤에 있는 문자열을 가져오기
-            // 만약 해시가 없으면 메인
             const currentHash = location.hash.substring(1) || '';
-            renderPage(currentHash); // 가져온 해시 값으로 다시 페이지를 렌더링
+            renderPage(currentHash); // 가져온 해시 값으로 다시 페이지를 렌더링해줌!
         });
 
         // 페이지가 처음 로드되었을 때
         window.addEventListener('load', () => {
-            const initialHash = location.hash.substring(1) || ''; // 처음 로드될 때 주소창의 해시 값을 가져옴
-            renderPage(initialHash); // 이 해시 값에 맞는 페이지 내용을 렌더링
-            // 사용자가 처음 페이지에 들어왔을 때의 주소 기록을 현제 해시값으로 바꿔치기하여 초기상태로 돌아가기
-            history.replaceState({ path: initialHash }, '', `#${initialHash}`);
+            const initialHash = location.hash.substring(1) || '';
+            renderPage(initialHash);
+            // 처음 로드될 때 주소가 `/problems/1`이면 `/problems/1/problem`으로 바꿔치기
+            if (initialHash.startsWith('/problems/') && initialHash.split('/').length === 2) {
+                history.replaceState({ path: `${initialHash}/problem` }, '', `#${initialHash}/problem`);
+            } else {
+                history.replaceState({ path: initialHash }, '', `#${initialHash}`);
+            }
         });
 
     </script>
