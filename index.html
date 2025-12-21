@@ -33,6 +33,7 @@
         /* .btn 클래스를 가진 요소에 마우스가 올라갔을 때 적용되는 스타일! (버튼에 마우스 올리면 색깔 변하는 거 ㅇㅇ) */
         .btn:hover{
             background-color: gray; /* 배경을 회색으로 바꿔서 '나 눌릴 준비 됐음' 티내기 ㅋㅋ */
+            cursor: pointer;
         }
         /* #main-content 아이디를 가진 요소에 적용되는 스타일! (주요 콘텐츠 영역일 듯?) */
         #main-content {
@@ -182,6 +183,10 @@
         .btn1:hover{
             background-color: gray; /* 배경을 회색으로 바꿔서 '나 눌릴 준비 됐음' 티내기 ㅋㅋ */
         }
+        .link{
+            text-decoration: none; /* 링크 밑줄 삭제*/
+            color: black; /* 글씨색 검은색 */
+        }
     </style>
     <link rel="icon" href="https://i.postimg.cc/kMfxNKWm/inisyeol-E.png" type="image/png" />
 </head>
@@ -216,7 +221,7 @@
                 content: '<p>연필의 개수를 샐 때 우리는 다스라는 단위를 사용한다.</p><p>1다스는 연필 12개이다</p><p>철수는 다스라는 단위를 몰라 연필을 살 때 사기를 당하지는 않을까 걱정하고 있다</p><p>우리가 철수 대신 이 연필이 한 다스가 맞는지 판별해 주자</p><hr><p><b>입력:</b> 첫째 줄에 연필의 개수 n이 주어진다. (0 < n < 100)</p><p><b>출력:</b> 첫째 줄에 한 다스가 맞다면 OK 아니면 NO 를 출력하라</p>'
             },
             '3': { // 2번 문제!
-                title: '#1: 편의점 알바 1일차',
+                title: '#3: 편의점 알바 1일차',
                 content: `<p>철수는 치동 편의점에서 아르바이트를 하고 있다.</p>
               <p>손님들이 구매하는 물품의 개수, 각 물품의 가격, 그리고 할인 여부를 입력받아 최종 결제 금액을 계산하는 프로그램을 작성해야 한다.</p>
               <p>물품 가격 계산 방식은 다음과 같다:</p>
@@ -243,6 +248,34 @@ n
 예시 출력:
 33000</code></pre>`
             },
+            '4': {
+                title: '#4: 부스 준비',
+                content: `<p>우리 동아리는 2025년도 치동제 부스를 준비 하고있다.</p>
+                <p>우리 <b>킹왕짱 개쩔고 깔@뽕 쌈@롱한 동아리장 최이든씨</b>는 어떤 아이들이 여러번 방문하지는 않을까 걱정을 하고 있다.</p>
+                <p>그래서 우리 <b>킹왕짱 개쩔고 깔@뽕 쌈@롱한 동아리장 최이든씨</b>는 코드를 짜서 이를 방지할려고 하였다.</p>
+                <p>우리 <b>킹왕짱 개쩔고 깔@뽕 쌈@롱한 동아리장 최이든씨</b>는 이미 코드를 다짜서 띵가띵가 놀다가 너네한테 이 문제를 낼려고 이걸 쓰고있다.</p>
+                <p>그러니까 니들은 이 사람이 이미 온적이 있는지 확인하는 코드를 작성해야한다.</p>
+                <hr>
+                <p><b>입력:</b>첫째줄에 자연수 n이 주어지고, 둘째줄부터 총 n개의 줄에 걸쳐서 치동중학교 학생의 학번이 주어진다.</p>
+                <p><b>출력:</b>이 학번이 치동중학교에 있는 학번인지 확인 여부와, 방문한적 있는지 확인 여부를 출력하라.</p>
+                <hr>
+                <p><b>힌트:</b></p>
+                <p>파이썬에는 2차원 배열이라는 개념이 있다.</p>
+                <p>a=[[n for col in range(k)] for row in range(kk)] 라고 선언하고</p>
+                <p>이 경우에는 a라는 이차원 배열에 n이라는 수로 이루어진 k x kk 사이즈의 배열이 만들어 지는 것이다.(보통 0으로 초기화 한 상태에서 사용한다.)</p>
+                <p>이 문제의 경우에는 a=[[0 for col in range (3)] for row in range(10)]라고 써저 a[?][??]형테로 쓰면 될것같다.</p>
+                <p>참고로 배열은 0부터 시작한다</p>
+                <hr>
+                <p><b>참고1:</b></p>
+                <p>단 1학년과 2학년은 10반까지, 3학년은 7반까지 있고, 모든반은 34번까지 있다고 가정하고 문제를 풀어야 한다.</p>
+                <hr>
+                <p><b>참고2:</b></p>
+                <p><a href="https://item.gmarket.co.kr/Item?spm=gmktpc.searchlist.cpc.d0_1.3fd52ad1im7iDP&goodscode=4410116596&buyboxtype=ad&utparam-url=%7B%22scene%22%3A%22search%22%2C%22sub_scene%22%3A%22main_srp%22%2C%22x_object_id%22%3A%224410116596%22%2C%22x_object_type%22%3A%22item%22%2C%22x_sku_id%22%3A%220%22%2C%22pageIndex%22%3A%220%22%2C%22pagePos%22%3A%221%22%2C%22pageSize%22%3A%228%22%2C%22listno%22%3A%221%22%2C%22sort%22%3A%22popularity%22%2C%22searchScenario%22%3A%22keyword%22%2C%22query%22%3A%22%EB%8C%80%EC%9A%A9%EB%9F%89%20%EC%A2%85%EC%9D%B4%EA%B7%B8%EB%A6%87%22%2C%22pvid%22%3A%2276170123fbb64863b3e5540cc8536612%22%2C%22pvid_sys%22%3A%22gmarket%20server%22%2C%22search_session_id%22%3A%222363e277-e23d-40cc-8167-c2a7dc0322d4%22%2C%22origin_price%22%3A%2214820%22%2C%22promotion_price%22%3A%2214680%22%2C%22coupon_price%22%3A%2212640%22%2C%22ab_buckets%22%3A%22%22%2C%22trafficType%22%3A%22ad%22%2C%22adProduct%22%3A%22N%22%2C%22adSubProduct%22%3A%22A%22%7D" class="link">종이컵(1개)</a></p>
+                <p><a href="https://item.gmarket.co.kr/Item?spm=gmktpc.searchlist.organictier.d0_0.b80b369eYRuDwl&goodscode=4049556631&utparam-url=%7B%22scene%22%3A%22search%22%2C%22sub_scene%22%3A%22main_srp%22%2C%22x_object_id%22%3A%224049556631%22%2C%22x_object_type%22%3A%22item%22%2C%22x_sku_id%22%3A%220%22%2C%22pageIndex%22%3A%220%22%2C%22pagePos%22%3A%220%22%2C%22pageSize%22%3A%2260%22%2C%22listno%22%3A%220%22%2C%22sort%22%3A%22priceasc%22%2C%22searchScenario%22%3A%22keyword%22%2C%22query%22%3A%22%EC%A7%9C%ED%8C%8C%EA%B2%8C%ED%8B%B0%20%EB%B2%94%EB%B2%85%22%2C%22pvid%22%3A%22f817ce07de5046d8baa8cc6f64114721%22%2C%22pvid_sys%22%3A%22gmarket%20server%22%2C%22search_session_id%22%3A%228303f5fa-e415-4cc7-9e82-ca61077ac047%22%2C%22origin_price%22%3A%22820%22%2C%22promotion_price%22%3A%22820%22%2C%22coupon_price%22%3A%22%22%2C%22ab_buckets%22%3A%22%22%2C%22trafficType%22%3A%22organic%22%7D" class="link">짜파게티(80개)</a></p>
+                <p><a href="https://item.gmarket.co.kr/Item?spm=gmktpc.searchlist.toporganictier.d0_0.6ba1109e17tTEF&goodscode=3539324312&utparam-url=%7B%22scene%22%3A%22search%22%2C%22sub_scene%22%3A%22main_srp%22%2C%22x_object_id%22%3A%223539324312%22%2C%22x_object_type%22%3A%22item%22%2C%22x_sku_id%22%3A%220%22%2C%22pageIndex%22%3A%220%22%2C%22pagePos%22%3A%220%22%2C%22pageSize%22%3A%224%22%2C%22listno%22%3A%220%22%2C%22sort%22%3A%22popularity%22%2C%22searchScenario%22%3A%22keyword%22%2C%22query%22%3A%22%EC%BD%9C%EB%9D%BC.%EC%82%AC%EC%9D%B4%EB%8B%A4%22%2C%22pvid%22%3A%22fb257bb7d8de44e18f8fbb11d6dc231b%22%2C%22pvid_sys%22%3A%22gmarket%20server%22%2C%22search_session_id%22%3A%2238402270-c462-453b-bf54-e7ae1e189b31%22%2C%22origin_price%22%3A%2237000%22%2C%22promotion_price%22%3A%2228900%22%2C%22coupon_price%22%3A%2227420%22%2C%22ab_buckets%22%3A%22%22%2C%22trafficType%22%3A%22organic%22%7D" class="link">콜라,사이다(2개)</a></p>
+                <p><a href="https://item.gmarket.co.kr/Item?spm=gmktpc.searchlist.toporganictier.d0_0.6b7a56b1QgyHR5&goodscode=3026658677&utparam-url=%7B%22scene%22%3A%22search%22%2C%22sub_scene%22%3A%22main_srp%22%2C%22x_object_id%22%3A%223026658677%22%2C%22x_object_type%22%3A%22item%22%2C%22x_sku_id%22%3A%220%22%2C%22pageIndex%22%3A%220%22%2C%22pagePos%22%3A%220%22%2C%22pageSize%22%3A%224%22%2C%22listno%22%3A%220%22%2C%22sort%22%3A%22popularity%22%2C%22searchScenario%22%3A%22keyword%22%2C%22query%22%3A%22%EC%8A%A4%ED%8B%B0%EB%A1%9C%20%ED%8F%BC%20%ED%8C%90%22%2C%22pvid%22%3A%22d891853b359e4d35b399355b37912e32%22%2C%22pvid_sys%22%3A%22gmarket%20server%22%2C%22search_session_id%22%3A%2289db6c19-f9b2-4c1d-968e-213bb5815ff5%22%2C%22origin_price%22%3A%22800%22%2C%22promotion_price%22%3A%22800%22%2C%22coupon_price%22%3A%22%22%2C%22ab_buckets%22%3A%22%22%2C%22trafficType%22%3A%22organic%22%7D" class="link">스티로폼 판(40개)</a></p>
+                <p><a href="https://item.gmarket.co.kr/Item?spm=gmktpc.searchlist.toporganictier.d0_3.61bf22bdm7l91T&goodscode=4328363925&utparam-url=%7B%22scene%22%3A%22search%22%2C%22sub_scene%22%3A%22main_srp%22%2C%22x_object_id%22%3A%224328363925%22%2C%22x_object_type%22%3A%22item%22%2C%22x_sku_id%22%3A%220%22%2C%22pageIndex%22%3A%220%22%2C%22pagePos%22%3A%223%22%2C%22pageSize%22%3A%224%22%2C%22listno%22%3A%223%22%2C%22sort%22%3A%22popularity%22%2C%22searchScenario%22%3A%22keyword%22%2C%22query%22%3A%22%EB%8B%A4%EA%B3%BC%22%2C%22pvid%22%3A%221fc7879072e847f5aede49587dcd7375%22%2C%22pvid_sys%22%3A%22gmarket%20server%22%2C%22search_session_id%22%3A%224efc7c0f-ea67-43e7-9015-4832a0a8ce17%22%2C%22origin_price%22%3A%2243800%22%2C%22promotion_price%22%3A%2242700%22%2C%22coupon_price%22%3A%2239300%22%2C%22ab_buckets%22%3A%22%22%2C%22trafficType%22%3A%22organic%22%7D" class="link">과자(2개)</a></p>`
+            },
             // 다른 문제들도 이런 식으로 추가하면 됨.
         };
         // 🌟 2. 라우트 정의 🌟
@@ -254,7 +287,7 @@ n
                     <h2>환영합니다!</h2>
                     <p>현재 채점은 불가능하고, 문제 보기만 가능합니다</p>
                     <br>
-                    <p>This web is made by <a href="https://www.instagram.com/2_than/%20target=" class="program-profile">2than<a></p>
+                    <p>This web is made by <a href="https://www.instagram.com/2_than/%20target=" class="link">2than<a></p>
                     
                 ` // 보여줄 HTML 내용! 백틱(`)을 써서 여러 줄의 문자열을 편하게 쓸 수 있음.
             },
