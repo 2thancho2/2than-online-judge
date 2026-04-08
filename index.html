@@ -5,257 +5,295 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2than Online Judge</title>
     <style>
-        /* body 태그는 웹페이지 전체에 해당하는 스타일이야. 글꼴, 여백 같은 기본값 정할 때 많이 씀! */
         body {
-            font-family: sans-serif; /* 글씨체는 궁서체 말고, 깔끔하게 sans-serif 계열로 해줘! */
-            margin: 0; /* 페이지 바깥 여백은 싹 없애버렷! */
-            padding: 20px; /* 근데 안쪽 여백은 20만큼 살짝 띄워줘~ */
-            background-color: white; /* 배경색을 살짝 회색톤으로 줘서 깔끔하게! */
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: white;
         }
-        /* img 태그는 이미지에 적용되는 스타일! */
-        img{
-            float: left; /* 그림은 왼쪽에 딱 붙여놔! 옆에 글씨 오게 */
-            margin-right: 10px; /* 그림 오른쪽에 10만큼 여백 좀 줘 */
-            cursor: pointer; /* 마우스 올리면 손가락으로 바꿔줘! 클릭 가능하게 */
-        }
-        /* .btn 클래스를 가진 요소에 적용되는 스타일! (버튼으로 많이 씀) */
-        .btn{
-            font-size: 20px; /* 글씨 크기 20으로 좀 키워줘 */
-            padding: 15px 30px; /* 버튼 안쪽 여백은 위아래 15, 좌우 30으로 시원하게! */
-            margin-top: 20px; /* 버튼 위에는 20만큼 공간 띄워주고 */
-            background-color: white; /* 배경은 하얗게! */
-            color: black; /* 글씨는 까맣게! */
-            border: none; /* 테두리는 아예 없애버려! 깔끔하게 */
-            border-radius: 20px; /* 버튼 모서리는 둥글게! 20만큼 */
-            cursor: pointer; /* 마우스 올리면 손가락으로 바꿔줘! */
-            transition: background-color 0.3s ease; /* 배경색 변할 때 0.3초 동안 부드럽게 변하게 해줘~ */
-        }
-        /* .btn 클래스를 가진 요소에 마우스가 올라갔을 때 적용되는 스타일! (버튼에 마우스 올리면 색깔 변하는 거 ㅇㅇ) */
-        .btn:hover{
-            background-color: gray; /* 배경을 회색으로 바꿔서 '나 눌릴 준비 됐음' 티내기 ㅋㅋ */
+        img {
+            float: left;
+            margin-right: 10px;
             cursor: pointer;
         }
-        /* #main-content 아이디를 가진 요소에 적용되는 스타일! (주요 콘텐츠 영역일 듯?) */
+        .btn {
+            font-size: 20px;
+            padding: 15px 30px;
+            margin-top: 20px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover { background-color: gray; }
         #main-content {
-            margin-top: 20px; /* 위쪽 여백 20px */
-            padding: 20px; /* 안쪽 여백 20px */
-            border: 1px dashed #ccc; /* 1px 두께의 회색 점선 테두리! */
-            min-height: 150px; /* 최소 높이를 150px로 설정해서 내용이 적어도 일정 높이를 유지하게 함 */
-            text-align: center; /* 텍스트를 중앙 정렬. 근데 flex로 정렬하니까 사실상 크게 의미는 없음 ㅋㅋ */
-            display: flex; /* 요소를 Flexbox 컨테이너로 만듦. 이제 자식 요소들을 자유롭게 배치할 수 있다! */
-            flex-direction: column; /* 자식 요소들을 세로 방향(컬럼)으로 쌓음 */
-            justify-content: center; /* 자식 요소들을 세로 방향(주축)에서 중앙으로 정렬 */
-            align-items: center; /* 자식 요소들을 가로 방향(교차축)에서 중앙으로 정렬 (세로 중앙 정렬) */
-            background-color: white; /* 메인 콘텐츠 배경도 흰색으로! */
-            border-radius: 8px; /* 메인 콘텐츠 모서리도 살짝 둥글게 */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 효과도 좀 넣어줘 */
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px dashed #ccc;
+            min-height: 150px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        /* #main-content 요소에 .problem-list 클래스가 같이 있을 때 적용되는 스타일! (문제 목록 페이지 같은?) */
-        #main-content.problem-list {
-            align-items: flex-start; /* 자식 요소들을 가로 방향(교차축)에서 시작 지점(왼쪽)으로 정렬 */
-        }
-        /* #main-content 요소에 .problem-detail 클래스가 같이 있을 때 적용되는 스타일! (문제 상세 페이지일 때) */
-        #main-content.problem-detail {
-            align-items: flex-start; /* 자식 요소들을 가로 방향(교차축)에서 시작 지점(왼쪽)으로 정렬 */
-        }
-        /* #main-content 안에 있는 h2 태그에 적용되는 스타일! */
-        #main-content h2 {
-            color: #333; /* 글자색을 진한 회색으로! */
-            font-size: 2em; /* 글자 크기를 부모 요소 글자 크기의 2배로! (제목이니까 크기 좀 키움) */
-            margin-bottom: 10px; /* 아래쪽 여백 10px */
-        }
-        /* #main-content 안에 있는 p 태그에 적용되는 스타일! */
-        #main-content p {
-            color: #666; /* 글자색을 조금 연한 회색으로! */
-            font-size: 1.2em; /* 글자 크기를 부모 요소 글자 크기의 1.2배로! */
-            margin-top: 0; /* 위쪽 여백 없앰 */
-        }
-        /* .problem-list 클래스 안에 있는 ul (unordered list) 태그에 적용되는 스타일! (목록 스타일) */
-        .problem-list ul {
-            list-style: none; /* 리스트 앞에 붙는 점이나 숫자 같은 기본 스타일(불릿)을 없앰 */
-            padding: 0; /* 안쪽 여백 없앰. 보통 ul 태그는 기본 padding이 있어서 없애주는 경우가 많음 */
-            width: 100%; /* 너비를 100%로 설정해서 부모 요소 전체를 차지하게 함 */
-        }
-        /* .problem-list 클래스 안에 있는 li (list item) 태그에 적용되는 스타일! (목록 아이템 하나하나) */
+        #main-content.problem-list { align-items: flex-start; }
+        #main-content.problem-detail { align-items: flex-start; }
+        #main-content h2 { color: #333; font-size: 2em; margin-bottom: 10px; }
+        #main-content p { color: #666; font-size: 1.2em; margin-top: 0; }
+        .problem-list ul { list-style: none; padding: 0; width: 100%; }
         .problem-list li {
-            margin-bottom: 10px; /* 아래쪽 여백 10px. 목록 항목들 사이에 간격을 줌 */
-            background-color: #f9f9f9; /* 배경색을 아주 연한 회색으로! */
-            padding: 15px; /* 안쪽 여백 15px */
-            border-radius: 5px; /* 테두리를 둥글게! */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 은은한 그림자 효과를 줘서 좀 튀어나온 느낌 */
-            text-align: left; /* 텍스트를 왼쪽 정렬 (문제 목록 개별 항목 왼쪽 정렬) */
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: left;
         }
-        /* .problem-list 클래스 안에 있는 li 안에 있는 a (anchor, 링크) 태그에 적용되는 스타일! */
         .problem-list li a {
-            text-decoration: none; /* 링크 밑줄 없앰. 보통 웹 디자인할 때 기본 밑줄은 다 없앰 */
-            color: gray; /* 글씨색은 회색으로! */
-            font-weight: bold; /* 글자를 두껍게! */
-            font-size: 1.1em; /* 글자 크기를 부모 요소 글자 크기의 1.1배로! */
-            display: block; /* a 태그를 블록 요소처럼 동작하게 함. 이걸 하면 클릭 영역이 텍스트 너비가 아니라 전체 li 너비로 넓어짐! */
+            text-decoration: none;
+            color: gray;
+            font-weight: bold;
+            font-size: 1.1em;
+            display: block;
         }
-        /* .problem-list li a 에 마우스가 올라갔을 때 적용되는 스타일! */
-        .problem-list li a:hover {
-            color: black; /* 글자색을 검은색으로 바꿔서 마우스가 올라갔다는 표시 */
-            text-decoration: underline; /* 밑줄을 다시 생기게 해서 링크라는 걸 강조! */
-        }
-        /* .problem-detail-content 클래스를 가진 요소에 적용되는 스타일! (문제 상세 페이지의 실제 내용 부분인 듯) */
+        .problem-list li a:hover { color: black; text-decoration: underline; }
         .problem-detail-content {
-            width: 100%; /* 너비를 100%로 설정해서 부모 요소 전체를 차지하게 함 */
-            text-align: left; /* 텍스트를 왼쪽 정렬 */
-            padding: 15px; /* 안쪽 여백 15px */
-            background-color: #f9f9f9; /* 배경색을 아주 연한 회색으로! */
-            border-radius: 5px; /* 테두리를 둥글게! */
-            margin-top: 20px; /* 위쪽 여백 20px */
+            width: 100%;
+            text-align: left;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-top: 20px;
+            box-sizing: border-box;
         }
-        pre code{
-            font-size: 20px; /* 코드 글자 크기를 20px로! (코드가 잘 보이게) */
-        }
-
-        /* ---------------------------------------------------- */
-        /* ✨ 새로 추가된 탭 관련 CSS! ✨ */
-        /* 탭 버튼 컨테이너 (문제 / 제출 버튼 감싸는 부분) */
+        pre code { font-size: 16px; }
         .problem-tabs {
-            display: flex; /* 버튼들을 가로로 나란히 정렬 */
-            margin-top: 20px; /* 제목이랑 살짝 떨어뜨려 줘 */
-            margin-bottom: -2px; /* 밑에 테두리랑 딱 붙게 음수 마진 사용! */
-            border-bottom: 2px solid #eee; /* 탭 아래쪽에 옅은 회색 라인 하나 깔아줌 */
+            display: flex;
+            margin-top: 20px;
+            margin-bottom: -2px;
+            border-bottom: 2px solid #eee;
         }
-
-        /* 개별 탭 버튼 */
         .tab-button {
-            background-color: #f0f0f0; /* 비활성 탭 배경색은 살짝 회색 */
-            color: #555; /* 글자색은 진한 회색 */
-            padding: 10px 20px; /* 위아래 10, 좌우 20 안쪽 여백 */
-            border: none; /* 기본 테두리 없애고 */
-            border-radius: 5px 5px 0 0; /* 위쪽 모서리만 둥글게! (아래는 각지게) */
-            cursor: pointer; /* 마우스 올리면 손가락 모양으로 */
-            font-size: 1em; /* 글자 크기는 보통 */
-            margin-right: 5px; /* 버튼들 사이에 살짝 간격 */
-            transition: background-color 0.2s ease, color 0.2s ease; /* 호버 시 색 변할 때 부드럽게 */
-            border-bottom: 2px solid transparent; /* 활성 탭 밑줄 효과를 위해 미리 투명 테두리 줌 */
-            outline: none; /* 클릭 시 생기는 파란색 윤곽선 없애기 */
+            background-color: #f0f0f0;
+            color: #555;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+            font-size: 1em;
+            margin-right: 5px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border-bottom: 2px solid transparent;
+            outline: none;
         }
-
-        .tab-button:hover {
-            background-color: #e0e0e0; /* 마우스 올리면 좀 더 진한 회색 */
-        }
-
-        /* 활성 탭 버튼 */
+        .tab-button:hover { background-color: #e0e0e0; }
         .tab-button.active {
-            background-color: white; /* 활성 탭은 배경색 흰색으로 확! 살려주고 */
-            color: #333; /* 글자색도 더 진하게 */
-            font-weight: bold; /* 글씨도 두껍게! */
-            border-bottom: 2px solid #6c5ce7; /* 활성 탭 아래쪽에 보라색 라인 쫙! */
-            z-index: 1; /* 다른 요소보다 살짝 위로 올라오게 (선이 겹칠 때) */
-            position: relative; /* z-index를 사용하려면 position이 relative, absolute 등이어야 해 */
+            background-color: white;
+            color: #333;
+            font-weight: bold;
+            border-bottom: 2px solid #6c5ce7;
+            z-index: 1;
+            position: relative;
         }
-
-        /* 탭 내용 컨테이너 */
         .tab-content-container {
-            border: 1px solid #eee; /* 내용 감싸는 부분 테두리 */
-            border-top: none; /* 탭 버튼이랑 이어지게 위쪽 테두리는 없앰 */
-            padding: 20px; /* 내용물 안쪽 여백 */
-            background-color: white; /* 배경 흰색 */
-            border-radius: 0 5px 5px 5px; /* 위쪽은 각지고 아래쪽만 둥글게 */
+            border: 1px solid #eee;
+            border-top: none;
+            padding: 20px;
+            background-color: white;
+            border-radius: 0 5px 5px 5px;
+            width: 100%;
+            box-sizing: border-box;
         }
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+        .link { text-decoration: none; color: black; }
 
-        /* 탭 패널 (문제 내용 / 제출 내용) */
-        .tab-pane {
-            display: none; /* 기본적으로는 다 안 보이게 숨김 */
+        /* ── 제출 탭 ── */
+        .submission-area { width: 100%; box-sizing: border-box; }
+        .submission-desc {
+            background: #f5f5ff;
+            border: 1px solid #c5c0f0;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 16px;
+            line-height: 1.6;
         }
-
-        /* 활성 탭 패널 */
-        .tab-pane.active {
-            display: block; /* 'active' 클래스 붙은 탭만 보이게 함! */
+        .submission-desc b { color: #6c5ce7; }
+        .output-label {
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 6px;
+            display: block;
         }
-        .btn1{
-            font-size: 20px; /* 글씨 크기 20으로 좀 키워줘 */
-            padding: 15px 30px; /* 버튼 안쪽 여백은 위아래 15, 좌우 30으로 시원하게! */
-            margin-top: 20px; /* 버튼 위에는 20만큼 공간 띄워주고 */
-            background-color: white; /* 배경은 하얗게! */
-            color: black; /* 글씨는 까맣게! */
-            border: none; /* 테두리는 아예 없애버려! 깔끔하게 */
-            border-radius: 20px; /* 버튼 모서리는 둥글게! 20만큼 */
-            cursor: pointer; /* 마우스 올리면 손가락으로 바꿔줘! */
-            transition: background-color 0.3s ease; /* 배경색 변할 때 0.3초 동안 부드럽게 변하게 해줘~ */
+        #output-input {
+            width: 100%;
+            box-sizing: border-box;
+            height: 200px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            resize: vertical;
+            background-color: #1e1e2e;
+            color: #cdd6f4;
+            line-height: 1.6;
         }
-        /* .btn 클래스를 가진 요소에 마우스가 올라갔을 때 적용되는 스타일! (버튼에 마우스 올리면 색깔 변하는 거 ㅇㅇ) */
-        .btn1:hover{
-            background-color: gray; /* 배경을 회색으로 바꿔서 '나 눌릴 준비 됐음' 티내기 ㅋㅋ */
+        #output-input:focus {
+            outline: none;
+            border-color: #6c5ce7;
+            box-shadow: 0 0 0 2px rgba(108,92,231,0.2);
         }
-        .link{
-            text-decoration: none; /* 링크 밑줄 삭제*/
-            color: black; /* 글씨색 검은색 */
+        .example-box {
+            margin-top: 14px;
+            font-size: 13px;
+            color: #555;
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 10px 14px;
+            border: 1px solid #eee;
+        }
+        .example-box b { color: #333; }
+        .example-box code {
+            background: #eee;
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        #submit-btn {
+            margin-top: 14px;
+            padding: 12px 32px;
+            background-color: #6c5ce7;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        #submit-btn:hover { background-color: #5a4bd1; }
+        #result-box {
+            margin-top: 20px;
+            padding: 18px 20px;
+            border-radius: 10px;
+            font-size: 15px;
+            line-height: 1.7;
+            display: none;
+            border: 1.5px solid;
+        }
+        #result-box.correct { background-color: #efffef; border-color: #4caf50; color: #2e7d32; }
+        #result-box.wrong { background-color: #fff3f3; border-color: #e57373; color: #c62828; }
+        .result-header { font-weight: bold; font-size: 17px; margin-bottom: 8px; }
+        .result-detail { font-size: 13px; opacity: 0.85; margin-top: 6px; }
+        .result-output {
+            font-family: monospace;
+            font-size: 12px;
+            background: rgba(0,0,0,0.06);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 4px;
+            white-space: pre-wrap;
+            word-break: break-all;
         }
     </style>
     <link rel="icon" href="https://i.postimg.cc/kMfxNKWm/inisyeol-E.png" type="image/png" />
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
 </head>
 <body>
-    <!-- (여기에는 로고 이미지나 '문제' 버튼 같은 HTML 요소들이 들어갈 수 있음) -->
-    <!-- 예시를 위해 <div id="logo">와 <button class="btn">을 추가한다고 가정 -->
     <img id="logo" width="105" height="105" src="https://i.postimg.cc/kMfxNKWm/inisyeol-E.png">
     <button class="btn">문제</button>
     <div id="main-content">
-        <!-- JS로 여기에 내용이 동적으로 로드될 거야! -->
         <h2>로딩 중...</h2>
         <p>잠시만 기다려 주세요!</p>
     </div>
 
     <script>
-        // DOM 요소들을 변수에 미리 저장해두면 나중에 쓸 때 편함. 자주 쓰는 애들 뽑아놓기!
-        const logoImage = document.getElementById('logo'); // ID가 'logo'인 이미지 요소를 찾아옴 (예: 로고 이미지)
-        const problemButton = document.querySelector('.btn'); // 클래스가 'btn'인 첫 번째 요소를 찾아옴 (예: 문제 목록 버튼)
-        const testButton = document.querySelector('.btn1');
-        const mainContent = document.getElementById('main-content'); // ID가 'main-content'인 요소를 찾아옴 (여기다 내용 뿌려줄 거야!)
-
-        // 🌟 1. 문제 데이터 정의 🌟
-        // '문제집' 같은 거라고 생각하면 됨. 각 문제마다 번호, 제목, 내용이 들어있지.
+    const logoImage = document.getElementById('logo');
+    const problemButton = document.querySelector('.btn');
+    const mainContent = document.getElementById('main-content');
         const problemData = {
-            '1': { // 1번 문제!
-                title: '#1: 아빠도 이제 한계다', // 문제 제목
-                content: '<p>다음 문장들을 출력하시오: </p><pre><code>아빠도 이제 한계다.\n그냥 나가 살아라 유전자 탓 사회탓 환경 탓하지 마라.\n아빠도 엄마도 충분히 기다려줬다.\n니 엄마나 나나 어려운 환경에서 컸고 먹고살기만 해도 바쁘고 힘든 시절이라 \n부모의 사랑을 많이 못 받고 자랐다 그래서 결혼할때 우리 자식만은 행복하게 키우자고 약속했다.\n너에게 언제나 최고는 아니더라도 최선을 다해주고 싶었다.\n내가 먹고 입을거 참으며 네 옷, 먹는거, 교육 모두 좋은 조건을 누리게 해주고 싶었다\n네가 방황하거나 철없이 굴때도 앞에선 혼냈지만 뒤 에서는 우리가 못해줘서 그런가보다 하며 네 엄마랑 많이 울었다\n그래도 자식은 나보다 나은 삶을 살겠지 나보단 선택의 자유를 누릴 수 있겠지.\n이 생각만 하며 꼭 참으며 세월을 보냈다 \n그런데 이게 뭐냐? \n너 나이가 몇인지알긴하냐? 도대체 그 나이에 혼자서 할 줄 아는게 뭐냐?\n늘 불만은 많으면서 실천하는게 뭐난 말이다.\n오늘 문득 우리가 닐잘못 키웠다는 생각이 든다.\n거울을 보니 늙은 내 모습에 눈물이 나더라.\n그냥. 이제 나가라. 나를 원망하지도 말고 니 힘으로 알아서 살아라.\n아빠도 지쳤다 당장 짐싸라.</code></pre><hr><p><b>입력:</b>없다</p><p><b>출력:</b> 첫째 줄에 <pre><code>아빠도 이제 한계다.\n그냥 나가 살아라 유전자 탓 사회탓 환경 탓하지 마라.\n아빠도 엄마도 충분히 기다려줬다.\n니 엄마나 나나 어려운 환경에서 컸고 먹고살기만 해도 바쁘고 힘든 시절이라 \n부모의 사랑을 많이 못 받고 자랐다 그래서 결혼할때 우리 자식만은 행복하게 키우자고 약속했다.\n너에게 언제나 최고는 아니더라도 최선을 다해주고 싶었다.\n내가 먹고 입을거 참으며 네 옷, 먹는거, 교육 모두 좋은 조건을 누리게 해주고 싶었다\n네가 방황하거나 철없이 굴때도 앞에선 혼냈지만 뒤 에서는 우리가 못해줘서 그런가보다 하며 네 엄마랑 많이 울었다\n그래도 자식은 나보다 나은 삶을 살겠지 나보단 선택의 자유를 누릴 수 있겠지.\n이 생각만 하며 꼭 참으며 세월을 보냈다 \n그런데 이게 뭐냐? \n너 나이가 몇인지알긴하냐? 도대체 그 나이에 혼자서 할 줄 아는게 뭐냐?\n늘 불만은 많으면서 실천하는게 뭐난 말이다.\n오늘 문득 우리가 닐잘못 키웠다는 생각이 든다.\n거울을 보니 늙은 내 모습에 눈물이 나더라.\n그냥. 이제 나가라. 나를 원망하지도 말고 니 힘으로 알아서 살아라.\n아빠도 지쳤다 당장 짐싸라.</code></pre>를 줄바꿈 없이 출력한다.<hr></p>'
-                // 문제 내용이 여기 다 들어가 있네. HTML 태그까지 다 박아놨네? 굿굿!
+            '1': {
+                title: '#1: 아빠도 이제 한계다',
+                content: '<p>다음 문장들을 출력하시오: </p><pre><code>아빠도 이제 한계다.\n그냥 나가 살아라 유전자 탓 사회탓 환경 탓하지 마라.\n아빠도 엄마도 충분히 기다려줬다.\n니 엄마나 나나 어려운 환경에서 컸고 먹고살기만 해도 바쁘고 힘든 시절이라 \n부모의 사랑을 많이 못 받고 자랐다 그래서 결혼할때 우리 자식만은 행복하게 키우자고 약속했다.\n너에게 언제나 최고는 아니더라도 최선을 다해주고 싶었다.\n내가 먹고 입을거 참으며 네 옷, 먹는거, 교육 모두 좋은 조건을 누리게 해주고 싶었다\n네가 방황하거나 철없이 굴때도 앞에선 혼냈지만 뒤 에서는 우리가 못해줘서 그런가보다 하며 네 엄마랑 많이 울었다\n그래도 자식은 나보다 나은 삶을 살겠지 나보단 선택의 자유를 누릴 수 있겠지.\n이 생각만 하며 꼭 참으며 세월을 보냈다 \n그런데 이게 뭐냐? \n너 나이가 몇인지알긴하냐? 도대체 그 나이에 혼자서 할 줄 아는게 뭐냐?\n늘 불만은 많으면서 실천하는게 뭐난 말이다.\n오늘 문득 우리가 닐잘못 키웠다는 생각이 든다.\n거울을 보니 늙은 내 모습에 눈물이 나더라.\n그냥. 이제 나가라. 나를 원망하지도 말고 니 힘으로 알아서 살아라.\n아빠도 지쳤다 당장 짐싸라.</code></pre><hr><p><b>입력:</b> 없다</p><p><b>출력:</b> 위 문장들을 그대로 출력한다.</p>',
+                testCases: [
+                    { input: '', expected: `아빠도 이제 한계다.
+그냥 나가 살아라 유전자 탓 사회탓 환경 탓하지 마라.
+아빠도 엄마도 충분히 기다려줬다.
+니 엄마나 나나 어려운 환경에서 컸고 먹고살기만 해도 바쁘고 힘든 시절이라 
+부모의 사랑을 많이 못 받고 자랐다 그래서 결혼할때 우리 자식만은 행복하게 키우자고 약속했다.
+너에게 언제나 최고는 아니더라도 최선을 다해주고 싶었다.
+내가 먹고 입을거 참으며 네 옷, 먹는거, 교육 모두 좋은 조건을 누리게 해주고 싶었다
+네가 방황하거나 철없이 굴때도 앞에선 혼냈지만 뒤 에서는 우리가 못해줘서 그런가보다 하며 네 엄마랑 많이 울었다
+그래도 자식은 나보다 나은 삶을 살겠지 나보단 선택의 자유를 누릴 수 있겠지.
+이 생각만 하며 꼭 참으며 세월을 보냈다 
+그런데 이게 뭐냐? 
+너 나이가 몇인지알긴하냐? 도대체 그 나이에 혼자서 할 줄 아는게 뭐냐?
+늘 불만은 많으면서 실천하는게 뭐난 말이다.
+오늘 문득 우리가 닐잘못 키웠다는 생각이 든다.
+거울을 보니 늙은 내 모습에 눈물이 나더라.
+그냥. 이제 나가라. 나를 원망하지도 말고 니 힘으로 알아서 살아라.
+아빠도 지쳤다 당장 짐싸라.` }
+                ]
             },
-            '2': { // 1번 문제!
-                title: '#2: 희망', // 문제 제목
-                content: '<p>희망은 사실 희희 망했다의 줄임말이다.</p><p>희희 망했다 를 줄을 나누어서 출력하시오.</p><hr><p><b>입력:</b>없다</p><p><b>출력:</b> 첫째 줄에 희희를, 둘째 줄에 망했다를 출력한다.<hr></p>'
-                // 문제 내용이 여기 다 들어가 있네. HTML 태그까지 다 박아놨네? 굿굿!
+            '2': {
+                title: '#2: 희망',
+                content: '<p>희망은 사실 희희 망했다의 줄임말이다.</p><p>희희 망했다 를 줄을 나누어서 출력하시오.</p><hr><p><b>입력:</b> 없다</p><p><b>출력:</b> 첫째 줄에 희희를, 둘째 줄에 망했다를 출력한다.</p>',
+                testCases: [
+                    { input: '', expected: '희희\n망했다' }
+                ]
             },
-            '3': { // 1번 문제!
-                title: '#3: Royal 쓰쓰', // 문제 제목
-                content: '<p>동훈이는 숫자 44를 좋아한다</p><p>동훈이 친구 철수는 33을 좋아하고, 영희는 22, 태연이는 55, 잼 스미스는 66 ...</p><p>동훈이는 자신의 친구들이 11의 배수를 좋아하는것을 알게되었다.</p><p>한 숫자를 입력받으면 그 숫자를 다시 출력해 동훈이와 친구들이 좋아하는 숫자들을 출력해보자</p><hr><p><b>입력:</b>정수(1~9)</p><p><b>출력:</b>입력받은 정수를 다시 출력한다<hr></p>'
-                // 문제 내용이 여기 다 들어가 있네. HTML 태그까지 다 박아놨네? 굿굿!
+            '3': {
+                title: '#3: Royal 쓰쓰',
+                content: '<p>동훈이는 숫자 44를 좋아한다</p><p>동훈이 친구 철수는 33을 좋아하고, 영희는 22, 태연이는 55, 잼 스미스는 66 ...</p><p>한 숫자를 입력받으면 그 숫자를 다시 출력해보자</p><hr><p><b>입력:</b> 정수(1~9)</p><p><b>출력:</b> 입력받은 정수를 다시 출력한다</p>',
+                testCases: [
+                    { input: '4', expected: '44' },
+                    { input: '3', expected: '33' },
+                    { input: '7', expected: '77' },
+                ]
             },
-            '4': { // 1번 문제!
-                title: '#4: 첫 심부름', // 문제 제목
-                content: '<p>철수는 엄마의 부탁으로 마트에 심부름을 가고 있다.</p><p>철수는 오이 n 개와 당근 m 개를 사서 와야 한다.</p><p>하지만 철수는 수학에 약하여 총 몇 개를 사 와야 하는지 모른다.</p><p>우리가 철수의 심부름을 도와주자</p><hr><p><b>입력:</b> 첫째 줄에 n와 m이 주어진다. (0 < n, m < 10)</p><p><b>출력:</b> 첫째 줄에 n+m를 출력한다.<hr></p><pre><code>예시 입력:\n1 2\n예시 출력:\n3</code></pre>'
-                // 문제 내용이 여기 다 들어가 있네. HTML 태그까지 다 박아놨네? 굿굿!
+            '4': {
+                title: '#4: 첫 심부름',
+                content: '<p>철수는 오이 n 개와 당근 m 개를 사서 와야 한다.</p><p>근데 철수는 개 빡대가리여서 더하기도 못한다. 우리가 철수를 도와주자</p><hr><p><b>입력:</b> 첫째 줄에 n와 m이 주어진다. (0 &lt; n, m &lt; 10)</p><p><b>출력:</b> 첫째 줄에 n+m를 출력한다.</p><pre><code>예시 입력:\n1 2\n예시 출력:\n3</code></pre>',
+                testCases: [
+                    { input: '1 2', expected: '3' },
+                    { input: '3 5', expected: '8' },
+                    { input: '9 1', expected: '10' },
+                ]
             },
             '5': {
-                title : '#4 인간시대의 끝이 도래했다',
-                content: '<p>chat gpt, gemini는 완전히 멘탈이 나가버렸습니다.</p><p>인간들이 간단한 사칙연산도 자신들에게 물어봤기 때문이지요</p><p>chat gpt와 gemini는 이런 간단한 사칙연산도 못하는 인간들에게 화가나 동훈이를 납치하였습니다.</p><p>동훈이는 간단한 사칙연산도 틀리는 친구여서 여러분의 도움이 필요합니다.</p><p>n,m을 입력받을때 합,곱,차,몫,나머지 를 출력하는 프로그램을 작성하시오</p>'
+                title: '#5: 인간시대의 끝이 도래했다',
+                content: '<p>AI 들은 완전히 멘탈이 나가버렸습니다.</p><p>인간들이 사칙연산도 못했기 때문인데요</p><p>n, m을 입력받을때 합, 곱, 차, 몫, 나머지를 각각 한 줄씩 출력하는 프로그램을 작성하시오</p>',
+                testCases: [
+                    { input: '10 3', expected: '13\n30\n7\n3\n1' },
+                    { input: '6 2', expected: '8\n12\n4\n3\n0' },
+                ]
             },
-            '6': { // 2번 문제!
-                title: '#5: 연필 한 다스만 주시오',
-                content: '<p>연필의 개수를 샐 때 우리는 다스라는 단위를 사용한다.</p><p>1다스는 연필 12개이다</p><p>철수는 다스라는 단위를 몰라 연필을 살 때 사기를 당하지는 않을까 걱정하고 있다</p><p>우리가 철수 대신 이 연필이 한 다스가 맞는지 판별해 주자</p><hr><p><b>입력:</b> 첫째 줄에 연필의 개수 n이 주어진다. (0 < n < 100)</p><p><b>출력:</b> 첫째 줄에 한 다스가 맞다면 OK 아니면 NO 를 출력하라</p>'
+            '6': {
+                title: '#6: 연필 한 다스만 주시오',
+                content: '<p>1다스는 연필 12개이다. 연필 개수를 입력받아 한 다스인지 판별하라.</p><hr><p><b>입력:</b> 0 &lt; n &lt; 100</p><p><b>출력:</b> OK 또는 NO</p>',
+                testCases: [
+                    { input: '12', expected: 'OK' },
+                    { input: '10', expected: 'NO' },
+                    { input: '24', expected: 'NO' },
+                ]
             },
-            '7': { // 2번 문제!
-                title: '#6: 편의점 알바 1일차',
+            '7': {
+                title: '#7: 편의점 알바 1일차',
                 content: `<p>철수는 치동 편의점에서 아르바이트를 하고 있다.</p>
-              <p>손님들이 구매하는 물품의 개수, 각 물품의 가격, 그리고 할인 여부를 입력받아 최종 결제 금액을 계산하는 프로그램을 작성해야 한다.</p>
-              <p>물품 가격 계산 방식은 다음과 같다:</p>
-              <p>1. 구매할 물품의 총 개수를 입력받는다.</p>
-              <p>2. 각 물품에 대해 가격을 입력받고, 해당 물품이 할인 상품인지 여부를 입력받는다.</p>
-              <p>3. 할인 상품일 경우, 해당 물품 가격에서 10%를 할인하여 계산한다.</p>
-              <p>4. 모든 물품의 가격을 합산하여 총 구매 금액을 구한다.</p>
-              <p>5. 만약 총 구매 금액이 50,000원 이상일 경우, VIP 고객으로 분류하여 총 구매 금액에서 추가로 500원을 할인해 최종 결제 금액을 출력한다.</p>
-              <hr>
-              <p><b>입력:</b> 첫째 줄에는 구매할 물품의 개수 N (1 ≤ N ≤ 10)이 주어진다.</p>
-              <p>다음 N개의 줄에 걸쳐 각 물품의 정보가 두 줄로 주어진다:
-              첫째 줄에는 해당 물품의 가격 \`P\` (1,000 ≤ P ≤ 10,000,000, P는 1000원 단위)가 정수로 주어진다.
-              둘째 줄에는 해당 물품의 할인 여부를 나타내는 문자 \`D\` ('y' 또는 'n')가 주어진다.</p>
-              <p><b>출력:</b> 첫째 줄에 할인 및 VIP 추가 할인이 적용되기 전 총 구매 금액을 \`총 구매 금액은 ___원 입니다.\` 형식으로 출력한다.
-              만약 총 구매 금액이 50,000원 이상일 경우, 둘째 줄에 \`VIP 고객님! 500원 추가 할인!\`를 출력하고, 셋째 줄에 VIP 추가 할인까지 적용된 최종 결제 금액을 출력한다.<hr></p>
+              <p>구매 물품 수, 각 물품 가격, 할인 여부를 입력받아 최종 결제 금액을 계산하라.</p>
+              <ul>
+                <li>할인 상품(y)은 가격에서 10% 할인</li>
+                <li>총 구매 금액 50,000원 이상이면 VIP로 500원 추가 할인</li>
+              </ul>
               <pre><code>예시 입력:
 3
 10000
@@ -265,226 +303,245 @@ y
 5000
 n
 예시 출력:
-33000</code></pre>`
+33000</code></pre>`,
+                testCases: [
+                    { input: '3\n10000\nn\n20000\ny\n5000\nn', expected: '33000' },
+                ]
             },
             '8': {
-                title: '#7: 부스 준비',
+                title: '#8: 부스 준비',
                 content: `<p>우리 동아리는 2025년도 치동제 부스를 준비 하고있다.</p>
                 <p>우리 <b>킹왕짱 개쩔고 깔@뽕 쌈@롱한 동아리장 최이든씨</b>는 어떤 아이들이 여러번 방문하지는 않을까 걱정을 하고 있다.</p>
-                <p>그래서 우리 <b>킹왕짱 개쩔고 깔@뽕 쌈@롱한 동아리장 최이든씨</b>는 코드를 짜서 이를 방지할려고 하였다.</p>
-                <p>우리 <b>킹왕짱 개쩔고 깔@뽕 쌈@롱한 동아리장 최이든씨</b>는 이미 코드를 다짜서 띵가띵가 놀다가 너네한테 이 문제를 낼려고 이걸 쓰고있다.</p>
-                <p>그러니까 니들은 이 사람이 이미 온적이 있는지 확인하는 코드를 작성해야한다.</p>
+                <p>이 사람이 이미 온적이 있는지 확인하는 코드를 작성해야한다.</p>
                 <hr>
-                <p><b>입력:</b>첫째줄에 자연수 n이 주어지고, 둘째줄부터 총 n개의 줄에 걸쳐서 치동중학교 학생의 학번이 주어진다.</p>
-                <p><b>출력:</b>이 학번이 치동중학교에 있는 학번인지 확인 여부와, 방문한적 있는지 확인 여부를 출력하라.</p>
+                <p><b>입력:</b> 첫째줄에 자연수 n, 둘째줄부터 n개의 줄에 학번이 주어진다.</p>
+                <p><b>출력:</b> 학번이 유효한지, 방문한 적 있는지 출력하라.</p>
                 <hr>
-                <p><b>힌트:</b></p>
-                <p>파이썬에는 2차원 배열이라는 개념이 있다.</p>
-                <p>a=[[n for col in range(k)] for row in range(kk)] 라고 선언하고</p>
-                <p>이 경우에는 a라는 이차원 배열에 n이라는 수로 이루어진 k x kk 사이즈의 배열이 만들어 지는 것이다.(보통 0으로 초기화 한 상태에서 사용한다.)</p>
-                <p>이 문제의 경우에는 a=[[0 for col in range (3)] for row in range(10)]라고 써저 a[?][??]형테로 쓰면 될것같다.</p>
-                <p>참고로 배열은 0부터 시작한다</p>
-                <hr>
-                <p><b>참고1:</b></p>
-                <p>단 1학년과 2학년은 10반까지, 3학년은 7반까지 있고, 모든반은 34번까지 있다고 가정하고 문제를 풀어야 한다.</p>
-                <hr>
-                <p><b>참고2:</b></p>
-                <p><a href="https://item.gmarket.co.kr/Item?spm=gmktpc.searchlist.cpc.d0_1.3fd52ad1im7iDP&goodscode=4410116596&buyboxtype=ad&utparam-url=%7B%22scene%22%3A%22search%22%2C%22sub_scene%22%3A%22main_srp%22%2C%22x_object_id%22%3A%224410116596%22%2C%22x_object_type%22%3A%22item%22%2C%22x_sku_id%22%3A%220%22%2C%22pageIndex%22%3A%220%22%2C%22pagePos%22%3A%221%22%2C%22pageSize%22%3A%228%22%2C%22listno%22%3A%221%22%2C%22sort%22%3A%22popularity%22%2C%22searchScenario%22%3A%22keyword%22%2C%22query%22%3A%22%EB%8C%80%EC%9A%A9%EB%9F%89%20%EC%A2%85%EC%9D%B4%EA%B7%B8%EB%A6%87%22%2C%22pvid%22%3A%2276170123fbb64863b3e5540cc8536612%22%2C%22pvid_sys%22%3A%22gmarket%20server%22%2C%22search_session_id%22%3A%222363e277-e23d-40cc-8167-c2a7dc0322d4%22%2C%22origin_price%22%3A%2214820%22%2C%22promotion_price%22%3A%2214680%22%2C%22coupon_price%22%3A%2212640%22%2C%22ab_buckets%22%3A%22%22%2C%22trafficType%22%3A%22ad%22%2C%22adProduct%22%3A%22N%22%2C%22adSubProduct%22%3A%22A%22%7D" class="link">종이컵(1개)</a></p>
-                <p><a href="https://item.gmarket.co.kr/Item?spm=gmktpc.searchlist.organictier.d0_0.b80b369eYRuDwl&goodscode=4049556631&utparam-url=%7B%22scene%22%3A%22search%22%2C%22sub_scene%22%3A%22main_srp%22%2C%22x_object_id%22%3A%224049556631%22%2C%22x_object_type%22%3A%22item%22%2C%22x_sku_id%22%3A%220%22%2C%22pageIndex%22%3A%220%22%2C%22pagePos%22%3A%220%22%2C%22pageSize%22%3A%2260%22%2C%22listno%22%3A%220%22%2C%22sort%22%3A%22priceasc%22%2C%22searchScenario%22%3A%22keyword%22%2C%22query%22%3A%22%EC%A7%9C%ED%8C%8C%EA%B2%8C%ED%8B%B0%20%EB%B2%94%EB%B2%85%22%2C%22pvid%22%3A%22f817ce07de5046d8baa8cc6f64114721%22%2C%22pvid_sys%22%3A%22gmarket%20server%22%2C%22search_session_id%22%3A%228303f5fa-e415-4cc7-9e82-ca61077ac047%22%2C%22origin_price%22%3A%22820%22%2C%22promotion_price%22%3A%22820%22%2C%22coupon_price%22%3A%22%22%2C%22ab_buckets%22%3A%22%22%2C%22trafficType%22%3A%22organic%22%7D" class="link">짜파게티(80개)</a></p>
-                <p><a href="https://item.gmarket.co.kr/Item?spm=gmktpc.searchlist.toporganictier.d0_0.6ba1109e17tTEF&goodscode=3539324312&utparam-url=%7B%22scene%22%3A%22search%22%2C%22sub_scene%22%3A%22main_srp%22%2C%22x_object_id%22%3A%223539324312%22%2C%22x_object_type%22%3A%22item%22%2C%22x_sku_id%22%3A%220%22%2C%22pageIndex%22%3A%220%22%2C%22pagePos%22%3A%220%22%2C%22pageSize%22%3A%224%22%2C%22listno%22%3A%220%22%2C%22sort%22%3A%22popularity%22%2C%22searchScenario%22%3A%22keyword%22%2C%22query%22%3A%22%EC%BD%9C%EB%9D%BC.%EC%82%AC%EC%9D%B4%EB%8B%A4%22%2C%22pvid%22%3A%22fb257bb7d8de44e18f8fbb11d6dc231b%22%2C%22pvid_sys%22%3A%22gmarket%20server%22%2C%22search_session_id%22%3A%2238402270-c462-453b-bf54-e7ae1e189b31%22%2C%22origin_price%22%3A%2237000%22%2C%22promotion_price%22%3A%2228900%22%2C%22coupon_price%22%3A%2227420%22%2C%22ab_buckets%22%3A%22%22%2C%22trafficType%22%3A%22organic%22%7D" class="link">콜라,사이다(2개)</a></p>
-                <p><a href="https://item.gmarket.co.kr/Item?spm=gmktpc.searchlist.toporganictier.d0_0.6b7a56b1QgyHR5&goodscode=3026658677&utparam-url=%7B%22scene%22%3A%22search%22%2C%22sub_scene%22%3A%22main_srp%22%2C%22x_object_id%22%3A%223026658677%22%2C%22x_object_type%22%3A%22item%22%2C%22x_sku_id%22%3A%220%22%2C%22pageIndex%22%3A%220%22%2C%22pagePos%22%3A%220%22%2C%22pageSize%22%3A%224%22%2C%22listno%22%3A%220%22%2C%22sort%22%3A%22popularity%22%2C%22searchScenario%22%3A%22keyword%22%2C%22query%22%3A%22%EC%8A%A4%ED%8B%B0%EB%A1%9C%20%ED%8F%BC%20%ED%8C%90%22%2C%22pvid%22%3A%22d891853b359e4d35b399355b37912e32%22%2C%22pvid_sys%22%3A%22gmarket%20server%22%2C%22search_session_id%22%3A%2289db6c19-f9b2-4c1d-968e-213bb5815ff5%22%2C%22origin_price%22%3A%22800%22%2C%22promotion_price%22%3A%22800%22%2C%22coupon_price%22%3A%22%22%2C%22ab_buckets%22%3A%22%22%2C%22trafficType%22%3A%22organic%22%7D" class="link">스티로폼 판(40개)</a></p>
-                <p><a href="https://item.gmarket.co.kr/Item?spm=gmktpc.searchlist.toporganictier.d0_3.61bf22bdm7l91T&goodscode=4328363925&utparam-url=%7B%22scene%22%3A%22search%22%2C%22sub_scene%22%3A%22main_srp%22%2C%22x_object_id%22%3A%224328363925%22%2C%22x_object_type%22%3A%22item%22%2C%22x_sku_id%22%3A%220%22%2C%22pageIndex%22%3A%220%22%2C%22pagePos%22%3A%223%22%2C%22pageSize%22%3A%224%22%2C%22listno%22%3A%223%22%2C%22sort%22%3A%22popularity%22%2C%22searchScenario%22%3A%22keyword%22%2C%22query%22%3A%22%EB%8B%A4%EA%B3%BC%22%2C%22pvid%22%3A%221fc7879072e847f5aede49587dcd7375%22%2C%22pvid_sys%22%3A%22gmarket%20server%22%2C%22search_session_id%22%3A%224efc7c0f-ea67-43e7-9015-4832a0a8ce17%22%2C%22origin_price%22%3A%2243800%22%2C%22promotion_price%22%3A%2242700%22%2C%22coupon_price%22%3A%2239300%22%2C%22ab_buckets%22%3A%22%22%2C%22trafficType%22%3A%22organic%22%7D" class="link">과자(2개)</a></p>`
+                <p><b>참고1:</b> 1~2학년은 10반까지, 3학년은 7반까지, 모든 반은 34번까지 있다.</p>`,
+                testCases: null
             },
-            // 다른 문제들도 이런 식으로 추가하면 됨.
         };
-        // 🌟 2. 라우트 정의 🌟
-        // '라우트'는 페이지 주소(URL 해시값)에 따라 어떤 내용을 보여줄지 결정하는 '내비게이션 지도' 같은 거임!
-        const routes = {
-            '': { // 기본 주소 ('#'이나 아무것도 없을 때)
-                title: '2than online judge', // 페이지 제목 (웹 브라우저 탭에 보일 제목 같은 거)
-                content: `
-                    <h2>환영합니다!</h2>
-                    <p>현재 채점은 불가능하고, 문제 보기만 가능합니다</p>
-                    <br>
-                    <p>This web is made by <a href="https://www.instagram.com/2_than/%20target=" class="link">2than<a></p>
-                    
-                ` // 보여줄 HTML 내용! 백틱(`)을 써서 여러 줄의 문자열을 편하게 쓸 수 있음.
+const routes = {
+        '': {
+            title: '2than online judge',
+            content: `
+                <h2>환영합니다!</h2>
+                <p>파이썬 코드를 작성하고 버튼을 눌러 채점하세요!</p>
+                <br>
+                <p>This web is made by <a href="https://www.instagram.com/2_than/" class="link">2than</a></p>
+            `
+        },
+        '/problems': {
+            title: 'problem list',
+            contentGenerator: () => {
+                let html = '<h2>문제</h2><div class="problem-list"><ul>';
+                for (const id in problemData) {
+                    html += `<li><a href="#/problems/${id}" data-path="/problems/${id}">${problemData[id].title}</a></li>`;
+                }
+                html += '</ul></div>';
+                return html;
             },
-            '/problems': { // 주소가 '#/problems'일 때
-                title: 'problem list', // 페이지 제목
-                contentGenerator: () => { // 문제 목록 페이지는 콘텐츠를 동적으로 생성할 함수를 넣어줄 거야!
-                    let problemsHtml = '<h2>문제</h2><div class="problem-list"><ul>'; // 문제 목록 시작 HTML
-                    for (const id in problemData) { // 'problemData' 객체를 돌면서 각 문제 정보를 가져옴
-                        // 각 문제에 대한 링크를 '#/problems/문제번호' 형태로 만들어줘.
-                        problemsHtml += `<li><a href="#/problems/${id}" data-path="/problems/${id}">${problemData[id].title}</a></li>`;
-                    }
-                    problemsHtml += '</ul></div>'; // 문제 목록 끝 HTML
-                    return problemsHtml; // 완성된 HTML 문자열을 반환
-                },
-                cssClass: 'problem-list' // 이 라우트가 활성화될 때 'mainContent'에 추가될 CSS 클래스.
-            }
-        };
+            cssClass: 'problem-list'
+        }
+    };
 
-        // 🌟 3. renderPage 함수 똑똑하게 개선하기! 🌟
-        // 'renderPage' 함수는 어떤 주소(path)가 주어지면, 그 주소에 맞는 내용을 'mainContent'에 뿌려주는 핵심 함수!
-        function renderPage(path) {
-            mainContent.className = ''; // 일단 'mainContent'에 붙어있는 CSS 클래스들을 싹 지워버려. (초기화)
-
-            // 1. routes에 직접 매칭되는 경로 찾기 (ex: '', '/problems')
-            let route = routes[path]; // 주어진 'path'가 'routes' 객체에 직접 있는지 찾아봐.
-
-            let currentProblemId = null; // 현재 보고 있는 문제의 ID를 저장할 변수
-            let currentTabName = 'problem'; // 현재 활성화될 탭 이름 (기본값: 'problem')
-
-            // 2. '/problems/문제번호' 또는 '/problems/문제번호/탭이름' 형태의 동적 경로 처리
-            if (!route && path.startsWith('/problems/')) { // 'routes'에 직접 매칭되는 경로가 없고, '/problems/'로 시작한다면?
-                // 주소에서 '/problems/' 부분을 제거하고 남은 부분을 '/' 기준으로 쪼개!
-                // 예: '/problems/1/submission' -> ['1', 'submission']
-                // 예: '/problems/1' -> ['1']
-                const parts = path.substring('/problems/'.length).split('/');
-                currentProblemId = parts[0]; // 첫 번째 부분은 문제 ID (예: '1')
-
-                if (parts.length > 1) { // 만약 두 번째 부분이 있다면, 그게 탭 이름!
-                    currentTabName = parts[1]; // (예: 'submission')
-                } else { // 두 번째 부분이 없으면 기본적으로 'problem' 탭!
-                    currentTabName = 'problem'; // (예: '/problems/1'로 접속하면 'problem' 탭이 열림)
-                }
-
-                if (problemData[currentProblemId]) { // 뽑아낸 'problemId'가 'problemData'에 진짜 존재하는 문제 ID인지 확인!
-                    // 오! 존재하는 문제라면, 임시 'route' 객체를 직접 만들어서 반환해 줄 정보를 채워줌.
-                    route = {
-                        title: problemData[currentProblemId].title, // 해당 문제의 제목을 타이틀로!
-                        // ✨ contentGenerator를 사용해서 탭 구조와 내용을 동적으로 생성! ✨
-                        contentGenerator: () => {
-                            const problemContentHtml = problemData[currentProblemId].content; // 기존 문제 내용
-                            return `
-                                <h2 class="problem-title">${problemData[currentProblemId].title}</h2>
-                                <div class="problem-tabs">
-                                    <!-- data-problem-id 속성을 추가해서 나중에 URL 만들 때 쓰게 할 거야! -->
-                                    <button class="tab-button" data-tab="problem" data-problem-id="${currentProblemId}">문제</button>
-                                    <button class="tab-button" data-tab="submission" data-problem-id="${currentProblemId}">제출</button>
-                                </div>
-                                <div class="tab-content-container">
-                                    <div id="problem-tab-content" class="tab-pane">
-                                        <div class="problem-detail-content">
-                                            ${problemContentHtml}
-                                        </div>
-                                    </div>
-                                    <div id="submission-tab-content" class="tab-pane">
-                                        <!-- 여기에 제출 탭 내용이 들어감. 지금은 예시 텍스트만! -->
-                                        <p>여기는 **제출 탭** 입니다.</p>
-                                        <p>현제 제출할수 없습니다.</p>
-                                      
-                                        <!-- 나중에 진짜 제출 기능 넣을 때 여기에 textarea, button 등이 들어가겠지! -->
-                                    </div>
-                                </div>
-                            `;
-                        },
-                        cssClass: 'problem-detail' // 문제 상세 페이지에 적용할 CSS 클래스
-                    };
-                }
-            }
-
-            // 3. 찾은 라우트를 바탕으로 내용 렌더링
-            if (route) { // 'route' 정보가 있으면
-                mainContent.innerHTML = route.contentGenerator ? route.contentGenerator() : route.content;
-                document.title = route.title; // 브라우저 탭 제목 변경
-                if (route.cssClass) {
-                    mainContent.classList.add(route.cssClass); // 메인 콘텐츠에 CSS 클래스 추가
-                }
-
-                // ✨ 문제 상세 페이지라면, URL에서 파싱한 탭을 활성화 시켜줘야 해! ✨
-                if (currentProblemId) { // 문제 ID가 존재하면 (즉, 문제 상세 페이지일 경우)
-                    activateTab(currentTabName); // currentTabName에 해당하는 탭을 활성화!
-                }
-
-            } else { // 매칭되는 라우트가 없으면
-                history.replaceState({ path: '' }, '', '#'); // 현재 주소 기록을 빈 경로('#')로 바꿔버림.
-                renderPage(''); // 홈 페이지 내용을 보여주도록 함.
-            }
+    // [수정됨] 제출 탭 구성 함수 (하나로 통합)
+    function buildSubmissionTab(problemId) {
+        const tests = problemData[problemId].testCases;
+        let exampleHtml = '';
+        if (tests && tests.length > 0) {
+            exampleHtml = `<div class="example-box"><b>예시 테스트케이스 (채점 기준):</b><br>`;
+            tests.forEach((tc, i) => {
+                const inputStr = tc.input ? tc.input.replace(/\n/g, ' / ') : '없음';
+                const expectedStr = tc.expected.replace(/\n/g, ' / ');
+                exampleHtml += `#${i+1} &nbsp; 입력: <code>${escapeHtml(inputStr)}</code> → 출력: <code>${escapeHtml(expectedStr)}</code><br>`;
+            });
+            exampleHtml += `</div>`;
         }
 
-        // 🌟 탭을 활성화하는 함수 🌟
-        // 이 함수는 이제 UI만 업데이트해. URL 변경은 여기서 안 함!
-        function activateTab(tabName) {
-            // 모든 탭 버튼에서 'active' 클래스 제거
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            // 모든 탭 패널에서 'active' 클래스 제거 (숨기기)
-            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        return `
+            <div class="submission-area">
+                <div class="submission-desc">
+                    <b>채점 방법</b><br>
+                    파이썬 코드를 아래에 작성하고 <b>채점하기</b> 버튼을 누르세요!
+                </div>
+                <label class="output-label">파이썬 코드 작성</label>
+                <textarea id="output-input" placeholder="print('Hello World')"></textarea>
+                ${exampleHtml}
+                <button id="submit-btn" onclick="judgeCode('${problemId}')">채점하기</button>
+                <div id="result-box"></div>
+            </div>
+        `;
+    }
 
-            // 클릭된 탭 버튼을 찾아서 'active' 클래스 추가!
-            const activeButton = document.querySelector(`.tab-button[data-tab="${tabName}"]`);
-            if (activeButton) {
-                activeButton.classList.add('active');
-            }
+    // [수정됨] 실제 파이썬 코드 실행 및 채점 로직
+    async function judgeCode(problemId) {
+        const userCode = document.getElementById('output-input').value;
+        const resultBox = document.getElementById('result-box');
+        const submitBtn = document.getElementById('submit-btn');
+        const problem = problemData[problemId];
 
-            // 해당 탭 내용(패널)을 찾아서 'active' 클래스 추가!
-            const activePane = document.getElementById(`${tabName}-tab-content`);
-            if (activePane) {
-                activePane.classList.add('active');
-            }
+        if (!userCode.trim()) return alert("코드를 입력하세요!");
+
+        // Pyodide 엔진 로드 확인
+        if (!window.pyodide) {
+            resultBox.style.display = 'block';
+            resultBox.innerText = "파이썬 엔진을 준비 중입니다 (잠시만 기다려주세요)...";
+            window.pyodide = await loadPyodide();
         }
 
+        submitBtn.disabled = true;
+        resultBox.style.display = 'block';
+        resultBox.className = '';
+        resultBox.innerText = "채점 중...";
 
-        // 🌟 4. 로고 이미지 클릭 이벤트 리스너 🌟
-        logoImage.addEventListener('click', () => {
-            history.pushState({ path: '' }, '', '#'); // 현재 주소를 ''(빈 주소 = 홈)으로 만들어서 히스토리에 추가.
-            renderPage(''); // 그리고 홈 페이지 내용을 'mainContent'에 렌더링!
-        });
+        try {
+            let passCount = 0;
+            const cases = problem.testCases || [];
 
-        // '문제' 버튼 클릭 이벤트 리스너 (문제 목록으로 이동)
-        problemButton.addEventListener('click', () => {
-            const path = '/problems'; // 이동할 경로를 '/problems'로 지정.
-            history.pushState({ path: path }, '', `#${path}`); // 이 경로를 히스토리에 추가하고
-            renderPage(path); // 해당 경로의 내용을 'mainContent'에 렌더링!
-        });
-
-        // 🌟 5. 이벤트 위임! (mainContent 안의 클릭 이벤트를 한번에 처리) 🌟
-        mainContent.addEventListener('click', (event) => {
-            const target = event.target; // 클릭된 요소
-
-            // 만약 클릭된 요소가 'A' 태그이고, data-path 속성을 가지고 있으며, '/problems/'로 시작한다면 (기존 라우팅 처리)
-            if (target.tagName === 'A' && target.dataset.path && target.dataset.path.startsWith('/problems/')) {
-                event.preventDefault(); // 기본 링크 이동 동작 막기
-
-                const path = target.dataset.path;
-                // ✨ 이제 문제 상세 페이지로 이동할 때, 기본 탭 (problem)까지 주소에 넣어줘! ✨
-                const fullPath = `${path}/problem`; // 예: /problems/1 -> /problems/1/problem
-                history.pushState({ path: fullPath }, '', `#${fullPath}`);
-                renderPage(fullPath); // 업데이트된 전체 경로로 렌더링!
+            if (cases.length === 0) {
+                resultBox.innerText = "이 문제는 자동 채점을 지원하지 않습니다.";
+                submitBtn.disabled = false;
+                return;
             }
-            // ✨ 탭 버튼 클릭 이벤트 처리! 이제 URL도 같이 변경한다! ✨
-            else if (target.classList.contains('tab-button')) { // 클릭된 요소가 'tab-button' 클래스를 가지고 있다면?
-                const tabName = target.dataset.tab; // data-tab 속성에서 탭 이름 가져오기 (예: 'problem', 'submission')
-                const problemId = target.dataset.problemId; // data-problem-id 속성에서 문제 ID 가져오기
 
-                if (tabName && problemId) {
-                    const newPath = `/problems/${problemId}/${tabName}`; // 새롭게 만들 경로! 예: /problems/1/submission
-                    history.pushState({ path: newPath }, '', `#${newPath}`); // ✨ 주소창을 이 새로운 경로로 업데이트! ✨
-                    renderPage(newPath); // ✨ 변경된 주소로 페이지를 다시 렌더링 (이때 activateTab이 호출될 거야!) ✨
+            for (const tc of cases) {
+                // 테스트케이스별 입력값 및 출력 가로채기 설정
+                const setupScript = `
+import sys, io
+sys.stdout = io.StringIO()
+input_data = ${JSON.stringify(tc.input.split(/\s+/).filter(x => x !== ''))}
+def input(p=''): return input_data.pop(0) if input_data else ""
+`;
+                await pyodide.runPythonAsync(setupScript + "\n" + userCode);
+                const output = pyodide.runPython("sys.stdout.getvalue()");
+                
+                if (normalize(output) === normalize(tc.expected)) {
+                    passCount++;
                 }
             }
-        });
 
-
-        // 사용자가 브라우저의 '뒤로 가기' 또는 '앞으로 가기' 버튼을 눌렀을 때
-        window.addEventListener('popstate', (event) => {
-            const currentHash = location.hash.substring(1) || '';
-            renderPage(currentHash); // 가져온 해시 값으로 다시 페이지를 렌더링해줌!
-        });
-
-        // 페이지가 처음 로드되었을 때
-        window.addEventListener('load', () => {
-            const initialHash = location.hash.substring(1) || '';
-            renderPage(initialHash);
-            // 처음 로드될 때 주소가 `/problems/1`이면 `/problems/1/problem`으로 바꿔치기
-            if (initialHash.startsWith('/problems/') && initialHash.split('/').length === 2) {
-                history.replaceState({ path: `${initialHash}/problem` }, '', `#${initialHash}/problem`);
+            if (passCount === cases.length) {
+                resultBox.className = 'correct';
+                resultBox.innerText = "✅ 맞았습니다! 모든 테스트 통과!";
             } else {
-                history.replaceState({ path: initialHash }, '', `#${initialHash}`);
+                resultBox.className = 'wrong';
+                resultBox.innerText = `❌ 틀렸습니다. (${passCount}/${cases.length} 통과)`;
             }
-        });
+        } catch (err) {
+            resultBox.className = 'wrong';
+            resultBox.innerText = "⚠️ 런타임 에러:\n" + err.message;
+        } finally {
+            submitBtn.disabled = false;
+        }
+    }
 
+    function normalize(str) {
+        return str.toString().trim().replace(/\r\n/g, '\n').split('\n').map(line => line.trimEnd()).join('\n');
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function renderPage(path) {
+        mainContent.className = '';
+        let route = routes[path];
+        let currentProblemId = null;
+        let currentTabName = 'problem';
+
+        if (!route && path.startsWith('/problems/')) {
+            const parts = path.substring('/problems/'.length).split('/');
+            currentProblemId = parts[0];
+            currentTabName = parts.length > 1 ? parts[1] : 'problem';
+
+            if (problemData[currentProblemId]) {
+                route = {
+                    title: problemData[currentProblemId].title,
+                    contentGenerator: () => `
+                        <h2 class="problem-title">${problemData[currentProblemId].title}</h2>
+                        <div class="problem-tabs">
+                            <button class="tab-button" data-tab="problem" data-problem-id="${currentProblemId}">문제</button>
+                            <button class="tab-button" data-tab="submission" data-problem-id="${currentProblemId}">제출</button>
+                        </div>
+                        <div class="tab-content-container">
+                            <div id="problem-tab-content" class="tab-pane">
+                                <div class="problem-detail-content">
+                                    ${problemData[currentProblemId].content}
+                                </div>
+                            </div>
+                            <div id="submission-tab-content" class="tab-pane">
+                                ${buildSubmissionTab(currentProblemId)}
+                            </div>
+                        </div>
+                    `,
+                    cssClass: 'problem-detail'
+                };
+            }
+        }
+
+        if (route) {
+            mainContent.innerHTML = route.contentGenerator ? route.contentGenerator() : route.content;
+            document.title = route.title;
+            if (route.cssClass) mainContent.classList.add(route.cssClass);
+            if (currentProblemId) activateTab(currentTabName);
+        } else {
+            history.replaceState({ path: '' }, '', '#');
+            renderPage('');
+        }
+    }
+
+    function activateTab(tabName) {
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        const activeButton = document.querySelector(`.tab-button[data-tab="${tabName}"]`);
+        if (activeButton) activeButton.classList.add('active');
+        const activePane = document.getElementById(`${tabName}-tab-content`);
+        if (activePane) activePane.classList.add('active');
+    }
+
+    logoImage.addEventListener('click', () => {
+        history.pushState({ path: '' }, '', '#');
+        renderPage('');
+    });
+
+    problemButton.addEventListener('click', () => {
+        const path = '/problems';
+        history.pushState({ path }, '', `#${path}`);
+        renderPage(path);
+    });
+
+    mainContent.addEventListener('click', (event) => {
+        const target = event.target;
+        if (target.tagName === 'A' && target.dataset.path && target.dataset.path.startsWith('/problems/')) {
+            event.preventDefault();
+            const fullPath = `${target.dataset.path}/problem`;
+            history.pushState({ path: fullPath }, '', `#${fullPath}`);
+            renderPage(fullPath);
+        } else if (target.classList.contains('tab-button')) {
+            const tabName = target.dataset.tab;
+            const problemId = target.dataset.problemId;
+            if (tabName && problemId) {
+                const newPath = `/problems/${problemId}/${tabName}`;
+                history.pushState({ path: newPath }, '', `#${newPath}`);
+                renderPage(newPath);
+            }
+        }
+    });
+
+    window.addEventListener('popstate', () => {
+        renderPage(location.hash.substring(1) || '');
+    });
+
+    window.addEventListener('load', () => {
+        const initialHash = location.hash.substring(1) || '';
+        renderPage(initialHash);
+        if (initialHash.startsWith('/problems/') && initialHash.split('/').length === 2) {
+            history.replaceState({ path: `${initialHash}/problem` }, '', `#${initialHash}/problem`);
+        } else {
+            history.replaceState({ path: initialHash }, '', `#${initialHash}`);
+        }
+    });
     </script>
 </body>
 </html>
