@@ -288,11 +288,20 @@
             },
             '7': {
                 title: '[조건문] #7: 나는야 189',
-                content: '<h2><b>"내 키는 189"</b></h2><h6>-김민종-</h6><hr><p>다음말은 키가 169인 김민종이 말한 말 이다.</p><p>189를 입력받으면 구라를, 169를 입력받으면 김민종을, 그외의 다른 정수를 입력받으면 x를 출력하시오.</p>',
+                content: '<h2><b>"내 키는 189"</b></h3><h6>-김민종-</h6><hr><p>다음말은 키가 169인 김민종이 말한 말 이다.</p><p>189를 입력받으면 구라를, 169를 입력받으면 김민종을, 그외의 다른 정수를 입력받으면 x를 출력하시오.</p>',
                 testCases: [
                     { input: '189', expected: '구라' },
                     { input: '169', expected: '김민종' },
                     { input: '289', expected: 'x' },
+                ]
+            },
+             '8': {
+                title: '[반복문] #8: 기도해드릴게요',
+                content: '<p><a href="https://www.instagram.com/reel/DWCkRUMzvxh/?utm_source=ig_web_copy_link" class="link">기도아저씨</a>는 새로운 시스템을 도입할려한다.</p><p>기도의 필요성을 숫자로 나타내고, 그 숫자만큼 기도를 하는것이다.</p><p>한 정수를 입력받았을때, 그 정수만큼 기도해드릴게요 를 출력하시오',
+                testCases: [
+                    { input: '1', expected: '기도해드릴게요' },
+                    { input: '2', expected: '기도해드릴게요\n기도해드릴게요' },
+                    { input: '3', expected: '기도해드릴게요\n기도해드릴게요\n기도해드릴게요' },
                 ]
             },
         };
@@ -303,7 +312,7 @@ const routes = {
                 <h2>환영합니다!</h2>
                 <p>파이썬 코드를 작성하고 버튼을 눌러 채점하세요!</p>
                 <br>
-                <p>This web is made by <a href="https://www.instagram.com/2_than/" class="link">2than</a></p>
+                <p>This web is made by <a href="https://www.instagram.com/2._.than/" class="link">2than</a></p>
             `
         },
         '/problems': {
