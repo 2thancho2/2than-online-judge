@@ -297,12 +297,26 @@
             },
              '8': {
                 title: '[반복문] #8: 기도해드릴게요',
-                content: '<p><a href="https://www.instagram.com/reel/DWCkRUMzvxh/?utm_source=ig_web_copy_link" class="link">기도아저씨</a>는 새로운 시스템을 도입할려한다.</p><p>기도의 필요성을 숫자로 나타내고, 그 숫자만큼 기도를 하는것이다.</p><p>한 정수를 입력받았을때, 그 정수만큼 기도해드릴게요 를 출력하시오',
+                content: '<p><a href="https://www.instagram.com/reel/DWCkRUMzvxh/?utm_source=ig_web_copy_link" class="link">기도아저씨</a>는 새로운 시스템을 도입할려한다.</p><p>기도의 필요성을 숫자로 나타내고, 그 숫자만큼 기도를 하는것이다.</p>한 정수를 입력받았을때, 그 정수만큼 기도해드릴게요 를 출력하시오<p>',
                 testCases: [
                     { input: '1', expected: '기도해드릴게요' },
                     { input: '2', expected: '기도해드릴게요\n기도해드릴게요' },
                     { input: '3', expected: '기도해드릴게요\n기도해드릴게요\n기도해드릴게요' },
                 ]
+            },
+             '9': {
+                title: '[번외] #9: Hello',
+                content: '<p>'Hello'를 출력하는 코드를 작성하시오</p><p>단 H,e,l,o,"",'',는 사용할수 없습니다.</p><br><b>힌트:</b><p>아스키 코드를 사용하면 쉽게 풀수있다.</p><p>print(chr(숫자)) 를 하면 숫자에 대한 아스키코드값을 출력할수 있다.</p>',
+                testCases: [
+                    { input: '', expected: 'Hello' },
+                   ]
+            },
+             '10': {
+                title: '[번외] #10: 그저 두배',
+                content: '<p>한 정수를 입력받아 그 수에 2를 곱한 값을 출력하시오</p><p>단 변수명,함수명 등에는 오직 문자 I(대문자 i), l(소문자 L)만 사용할수 있다</p>',
+                testCases: [
+                    { input: '512', expected: '1024' },
+                   ]
             },
         };
 const routes = {
